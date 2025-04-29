@@ -1,25 +1,36 @@
 .usuario
     padding: 0.8rem 
-    border: 1px solid #ddd 
+    border: 1px solid rgba(104, 103, 100, 0.97)
+    background-color: rgba(245, 235, 204, 0.16)
     border-radius: 5px 
     font-size: 1rem
+    &:focus
+        outline: none
 
 .senha
     padding: 0.8rem 
-    border: 1px solid #ddd 
+    border: 1px solid rgba(104, 103, 100, 0.97)
+    background-color: rgba(245, 235, 204, 0.16)
     border-radius: 5px 
     font-size: 1rem
+    &:focus
+        outline: none
 
 .entrar
     padding: 0.8rem
-    background: #d8ac72 
+    background-color: rgb(160, 133, 46)
     color: white 
     border: none 
     border-radius: 5px 
     cursor: pointer 
     font-size: 1rem
+    transition: background-color 0.3s ease
 
-.alinhamento
+    &:hover
+        background-color: rgb(190, 123, 34)
+        color: white
+
+.container
     padding: 2px
     border-radius: 10px 
     min-width: 300px
