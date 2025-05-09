@@ -1,19 +1,24 @@
 <div class="classe-principal">
-    <div class = "posicaoCadastro">
-        <div class="container">
-            <h2 class = "textoCadastro">Cadastro</h2>
-            <form class ="areaCadastro">
-
-                <input type="text" placeholder="Usuário">
-
-                <input type="text" placeholder="E-mail">
+  
+    <div class = "posicaoLogin">
+      
+      <div class = "container">
+        <h2 class = "textoLogin">Login</h2>
         
-                <input type="password" placeholder="Senha">
-
-                <input type="password" placeholder="Confirmar Senha">
-
-                <button type="submit" class = "cadastro"> Cadastre-se</button>
-            </form>
-        </div>
+        <form class ="areaLogin">
+          <input type="text" placeholder="Usuário">
+          
+          <input type="password" placeholder="Senha">
+  
+          <div class="textoEsquecido">
+            <a href="#">Esqueceu a sua seha?</a>
+          </div>
+          <button type="submit" class = "entrar"> Entrar </button>
+          <div class="textoRegistro">
+            <a routerLink = "/cadastro" > Cadastre-se </a>
+          </div>
+        </form>
+      </div>
     </div>
-</div>
+    <router-outlet></router-outlet>
+  </div>
