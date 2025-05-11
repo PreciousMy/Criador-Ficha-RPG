@@ -1,6 +1,7 @@
 <div class="classe-principal">
     <div class = "posicaoCadastro">
         <div class="container">
+            <h1>Forja ficha</h1>
             <h2 class = "textoCadastro">Cadastro</h2>
             <form class ="areaCadastro">
 
@@ -11,9 +12,14 @@
                 <input type="password" placeholder="Senha">
 
                 <input type="password" placeholder="Confirmar Senha">
-
-                <button type="submit" class = "cadastro"> Cadastre-se</button>
+                
+                <div class="areaCadastro">
+                    <button type="submit" class = "cadastro"> Cadastre-se</button>
+                    <button type="button" routerLink = "/login"> Cancelar </button>
+                </div>
+                
             </form>
         </div>
     </div>
+    <router-outlet></router-outlet>
 </div>
