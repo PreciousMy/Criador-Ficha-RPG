@@ -1,24 +1,94 @@
 <div class = "container"> 
 
     <div class = "esquerda"> 
-        <img src="/imgs/fotoDefault.png" width="100" height="100">
-        <h2>Nome Usuario</h2>
-        <p>email&#64;gmail.com</p>
 
-        <div class="listaFicha" style="overflow:scroll">
+        <div class="menu">
+            <button class="botaoMenu">Alterar Perfil</button>
+            <div>
+                <img src="/imgs/fotoDefault.png" width="100" height="100">
+                <h2>Nome Usuario</h2>
+                <p>email&#64;gmail.com</p>
+            </div>
+            <button class="botaoMenu" routerLink = "/login" >Sair</button>
+        </div>
+        <router-outlet></router-outlet>
+        
+        <div class="listaFichaE">
+            <h2>Fichas Criadas</h2>
             <ol>
-                <li> ficha 1 </li>
+                <li onclick=""> ficha 1 </li>
+                <li onclick=""> ficha 1 </li>
             </ol>
         </div>
+        <button class="add" onclick="">+</button>
+        <button class="add" onclick="">-</button>
         
     </div>
-
+    
     <div class = "centro">
-        aqui é centro
+        <h1>Nome Ficha</h1>
+        <div class="verFicha">
+            <p> 
+                O mundo está mudado.<br>
+                Eu sinto isso na água.<br>
+                Eu sinto isso na terra.<br>
+                Eu farejo isso no ar.<br>
+                Muito do que já existiu se perdeu...<br>
+                Pois não há mais ninguém vivo que se lembre.<br>
+                Tudo começou com a forja dos grandes anéis.<br>
+                Três foram dados aos Elfos imortais... Os mais sábios e belos de todos os seres.<br>
+                Sete, aos senhores dos Anões... Grandes mineradores e artífices dos corredores das montanhas.<br>
+                E nove, nove anéis foram dados à raça dos homens... Que, acima de tudo desejavam poder.<br>
+                Pois, dentro desses anéis foi selada a força e a vontade para governar cada raça.<br>
+                Mas todos foram enganados.<br>
+                Pois outro anel foi forjado.<br>
+                Na terra de Mordor, nas chamas da montanha da perdição Sauron, o Senhor do Escuro forjou em segredo um anel mestre, para controlar todos os outros.
+                E nesse anel, ele derramou sua crueldade, sua malícia e sua vontade de dominar todas as formas de vida.<br>
+                Um anel para todas governar.<br>
+                Uma por uma as terras livres da Terra-Média submeteram-se ao poder do anel.<br>
+                Mas houve alguns que resistiram.<br>
+                A última aliança entre Homens e Elfos marcgou contra os exércitos de Mordor.<br>
+                E, na montanha da perdição, lutou pela liberdade da Terra-Média.<br>
+                A vitória estava próxima.<br>
+                Mas o poder do anel não podia ser destruido.<br>
+                Foi nesse momento, quando toda a esperança havia minguado que Isildur, o filgo do rei ergueu a espada do sei pai.<br>
+                Sauron, o inimigo dos povos livres da Terra-Média foi derrotado.<br> 
+                O mundo está mudado.<br>
+                Eu sinto isso na água.<br>
+                Eu sinto isso na terra.<br>
+                Eu farejo isso no ar.<br>
+                Muito do que já existiu se perdeu...<br>
+                Pois não há mais ninguém vivo que se lembre.<br>
+                Tudo começou com a forja dos grandes anéis.<br>
+                Três foram dados aos Elfos imortais... Os mais sábios e belos de todos os seres.<br>
+                Sete, aos senhores dos Anões... Grandes mineradores e artífices dos corredores das montanhas.<br>
+                E nove, nove anéis foram dados à raça dos homens... Que, acima de tudo desejavam poder.<br>
+                Pois, dentro desses anéis foi selada a força e a vontade para governar cada raça.<br>
+                Mas todos foram enganados.<br>
+                Pois outro anel foi forjado.<br>
+                Na terra de Mordor, nas chamas da montanha da perdição Sauron, o Senhor do Escuro forjou em segredo um anel mestre, para controlar todos os outros.
+                E nesse anel, ele derramou sua crueldade, sua malícia e sua vontade de dominar todas as formas de vida.<br>
+                Um anel para todas governar.<br>
+                Uma por uma as terras livres da Terra-Média submeteram-se ao poder do anel.<br>
+                Mas houve alguns que resistiram.<br>
+                A última aliança entre Homens e Elfos marcgou contra os exércitos de Mordor.<br>
+                E, na montanha da perdição, lutou pela liberdade da Terra-Média.<br>
+                A vitória estava próxima.<br>
+                Mas o poder do anel não podia ser destruido.<br>
+                Foi nesse momento, quando toda a esperança havia minguado que Isildur, o filgo do rei ergueu a espada do sei pai.<br>
+                Sauron, o inimigo dos povos livres da Terra-Média foi derrotado.<br> 
+            </p>
+        </div>
     </div>
 
     <div class = "direita">
-        aqui é direita
+        <h1> Fichas Publicas </h1>
+        <div class="listaFichaD">
+            <ol>
+                <li onclick=""> ficha 1 </li>
+                <li onclick=""> ficha 1 </li>
+            </ol>
+        </div>
     </div>
 
 </div>

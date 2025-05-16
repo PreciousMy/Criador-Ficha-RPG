@@ -5,31 +5,114 @@
     background-repeat: no-repeat
     background-size: cover
     display: flex
-    float: left
     text-align: center
 
 .esquerda
     margin: 10px
     padding: 20px
     border-radius: 10px
+    box-shadow: 4px 6px rgba(0, 0, 0, 0.1)
     background-color: rgba(245, 221, 169, 0.521)
     flex: 30%
 
 
 .centro
-    background-color: rgba(196, 194, 194, 0.24)
+    margin: 10px
+    padding: 20px
+    border-radius: 10px
+    box-shadow: 4px 6px rgba(0, 0, 0, 0.1)
+    background-color: rgb(243, 237, 224)
     flex: 50%
 
 
 .direita
-    background-color: rgba(0, 0, 0, 0.24)
+    margin: 10px
+    padding: 20px
+    border-radius: 10px
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    background-color: rgba(245, 221, 169, 0.521)
     flex: 30%
 
-.listaFicha
-    background-color: rgba(230, 223, 223, 0.74)
+.listaFichaE
+    border-top: 2px solid rgba(133, 105, 14, 0.73)
+    border-bottom: 2px solid rgba(133, 105, 14, 0.73)
+    overflow-y: auto
     margin: 20px
-    height: 75%
+    height: 71%
     padding: 20px
+
+.listaFichaD
+    border-top: 2px solid rgba(133, 105, 14, 0.73)
+    border-bottom: 2px solid rgba(133, 105, 14, 0.73)
+    overflow-y: auto
+    margin: 20px
+    height: 90%
+    padding: 20px
+
+.verFicha
+    margin-top: 15px
+    overflow-y: auto
+    height: 94%
+
+.add
+    height: 50px
+    margin-right: 10px
+    width: 50px
+    border-radius: 50%
+    background-color: rgb(243, 237, 224)
+    border: none
+    font-size: 24px
+    cursor: pointer
+    color: rgb(172, 28, 28)
+    &:hover
+        background-color: rgb(206, 200, 187)
+
+.menu
+    display: flex
+    text-align: center
+    
+.botaoMenu
+    flex:50%
+    width:30%
+    height:1%
+    padding: 0.8rem
+    background-color: rgb(243, 237, 224)
+    color: rgb(104, 61, 4)
+    border: none 
+    border-radius: 5px 
+    cursor: pointer 
+    font-size: 100%
+    font-family: libre-bold
+    transition: background-color 0.3s ease
+
+    &:hover
+        background-color: rgb(206, 200, 187)
+        color: rgb(104, 61, 4)
+
 
 ol
     list-style-type: none
+    font-family: libre-bold
+
+h1
+    font-family: girassol
+    color: rgb(172, 28, 28)
+
+h2
+    font-family: girassol
+    color: rgb(172, 28, 28)
+
+p
+    font-family: libre-bold
+
+li
+    padding: 13px
+    margin: 8px
+    background-color: rgba(255, 255, 255, 0.57)
+    border-radius: 7px
+    cursor: pointer
+    align-items: center
+    transition: background-color 0.3s ease
+    
+    &:hover
+        background-color: rgb(206, 200, 187)
