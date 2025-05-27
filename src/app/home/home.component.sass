@@ -1,41 +1,59 @@
 .container
     height: 100vh
-    width: 100%
-    background: url('/imgs/telaFundo.png')
-    background-repeat: no-repeat
+    width: 100vw
+    display: flex
+    justify-content: center
+    align-items: center
+    background: url('/imgs/telaFundo.png') no-repeat center center
     background-size: cover
     display: flex
     text-align: center
-
-.esquerda
-    margin: 10px
+    gap: 20px
     padding: 20px
+
+.esquerda, .centro, .direita
+    height: 90vh
+    max-height: 800px
     border-radius: 10px
     box-shadow: 4px 6px rgba(0, 0, 0, 0.1)
+    padding: 20px
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+
+.esquerda, .direita
+    width: 20%
     background-color: rgba(245, 221, 169, 0.521)
     flex: 30%
 
 
 .centro
-    margin: 10px
-    padding: 20px
-    border-radius: 10px
-    box-shadow: 4px 6px rgba(0, 0, 0, 0.1)
+    width: 55%
     background-color: rgb(243, 237, 224)
-    flex: 50%
+    overflow: hidden
+
+// Ajustar posição dos ícones
+.menu
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin-bottom: 10px
+    margin-top: -10px // Sobe os ícones
+
+.botaoImg
+    all: unset
+    cursor: pointer
+    font-size: 20px
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 45px
+    width: 45px
+    border-radius: 50%
 
 
-.direita
-    margin: 10px
-    padding: 20px
-    border-radius: 10px
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    background-color: rgba(245, 221, 169, 0.521)
-    flex: 30%
-
-.listaFichaE
-    border-top: 2px solid rgba(133, 105, 14, 0.73)
-    border-bottom: 2px solid rgba(133, 105, 14, 0.73)
+.listaFichaE, .listaFichaD
+    flex-grow: 1
     overflow-y: auto
     margin: 20px
     height: 58vh
@@ -44,46 +62,28 @@
 .listaFichaD
     border-top: 2px solid rgba(133, 105, 14, 0.73)
     border-bottom: 2px solid rgba(133, 105, 14, 0.73)
-    overflow-y: auto
-    margin: 20px
-    height: 76vh
-    padding: 20px
+    margin: 15px 0
+    padding: 10px
 
 .verFicha
-    margin-top: 15px
+    flex-grow: 1
     overflow-y: auto
-    height: 86vh
+    margin-top: 10px
+    text-align: left
+    line-height: 1.6
+    padding-right: 10px
 
 .add
-    height: 50px
-    margin-right: 10px
-    width: 50px
+    align-self: center
+    height: 45px
+    width: 45px
     border-radius: 50%
     background-color: rgb(243, 237, 224)
     border: none
     font-size: 24px
     cursor: pointer
     color: rgb(172, 28, 28)
-    &:hover
-        background-color: rgb(206, 200, 187)
-
-.menu
-    display: flex
-    text-align: center
-    
-.botaoMenu
-    flex:50%
-    width:30%
-    height:1%
-    padding: 0.8rem
-    background-color: rgb(243, 237, 224)
-    color: rgb(104, 61, 4)
-    border: none 
-    border-radius: 5px 
-    cursor: pointer 
-    font-size: 100%
-    font-family: libre-bold
-    transition: background-color 0.3s ease
+    margin-top: 10px
 
     &:hover
         background-color: rgb(206, 200, 187)
@@ -92,27 +92,24 @@
 
 ol
     list-style-type: none
-    font-family: libre-bold
-
-h1
-    font-family: girassol
-    color: rgb(172, 28, 28)
-
-h2
-    font-family: girassol
-    color: rgb(172, 28, 28)
-
-p
-    font-family: libre-bold
+    padding: 0
 
 li
     padding: 13px
-    margin: 8px
+    margin: 8px 0
     background-color: rgba(255, 255, 255, 0.57)
     border-radius: 7px
     cursor: pointer
     align-items: center
     transition: background-color 0.3s ease
-    
+
     &:hover
         background-color: rgb(206, 200, 187)
+
+h1, h2
+    font-family: girassol
+    color: rgb(172, 28, 28)
+    margin: 10px 0
+
+p
+    font-family: libre-bold
