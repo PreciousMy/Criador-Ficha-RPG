@@ -1,43 +1,30 @@
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import {AtenticacaoService} from '../servico/atenticacao.service';
+
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-cadastro',
-  imports: [ CommonModule, FormsModule, RouterModule],
-  templateUrl: './cadastro.component.html',
-  styleUrl: './cadastro.component.sass'
+  imports: [RouterModule],
+  templateUrl: './cadastro.html',
+  styleUrl: './cadastro.css',
 })
-export class CadastroComponent {
-  usuario: string = '';
-  email: string = '';
-  senha: string = '';
-  confirma_senha: string = '';
+export class CadastroComponent implements OnInit {
+  constructor(private client: HttpClient) {}
 
-  constructor(
-    private authService: AtenticacaoService,
-    private router: Router
-  ) {}
-
-  Cadastrar() {
-    const dados = {
-      usuario: this.usuario,
-      email: this.email,
-      senha: this.senha,
-      confirma_senha: this.confirma_senha
-    };
-
-    this.authService.cadastro(dados).subscribe({
-      next: () => {
-        alert('Cadastro realizado com sucesso!');
-        this.router.navigate(['/login']);
-      },
-      error: (err) => {
-        alert('Erro ao cadastrar: ' + err.message);
-      }
-    });
+  ngOnInit(): void {
+    this.client
+      .post<{ usuario: string; id: number }>(
+        'http://localhost:8000/auth/users/',
+        {
+          usuario: 'felipe2',
+          email: 'felipe2@gmail.com',
+          senha: '!Q@S#E!Q@S#E',
+          conf_senha: '!Q@S#E!Q@S#E',
+        }
+      )
+      .subscribe((resp) => console.log(resp));
   }
 }

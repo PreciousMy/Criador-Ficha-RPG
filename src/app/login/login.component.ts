@@ -1,32 +1,23 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import {AtenticacaoService} from '../servico/atenticacao.service';
-import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-
+import {router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.sass'
 })
-export class LoginComponent {
-  usuario = '';
-  senha = '';
+export class LoginComponent implements OnInit {
+  constructor(private client: HttpClient) {}
 
-  constructor(private AtenticacaoService: AtenticacaoService, private router: Router) {}
-
-  Login() {
-    this.AtenticacaoService.login({ usuario: this.usuario, senha: this.senha }).subscribe({
-      next: (res: { token: string; }) => {
-        localStorage.setItem('token', res.token);
-        this.router.navigate(['/dashboard']);
-      },
-      error: (err: any) => {
-        alert('Login inválido');
-      },
-    });
+  ngOnInit(): void {
+    this.client
+      .post<{ access: string; refresh: string }>(
+        'http://localhost:8000/auth/jwt/create/',
+        { usuario: 'felipe2', senha: '!Q@S#E!Q@S#E' }
+      )
+      .subscribe((resp) => localStorage.setItem('token', resp.access));
   }
 }
