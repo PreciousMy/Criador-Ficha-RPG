@@ -8,8 +8,8 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-cadastro',
   imports: [RouterModule],
-  templateUrl: './cadastro.html',
-  styleUrl: './cadastro.css',
+  templateUrl: './cadastro.component.html',
+  styleUrl: './cadastro.component.sass'
 })
 export class CadastroComponent implements OnInit {
   constructor(private client: HttpClient) {}
