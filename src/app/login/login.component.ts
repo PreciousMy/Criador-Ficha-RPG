@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import {AtenticacaoService} from '../servico/atenticacao.service';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-login',
-  imports: [RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.sass'
 })
