@@ -3,8 +3,7 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { SalaComponent } from './sala/sala.component';
-import {ProtegidaComponent} from '../app/protegida/protegida.component';
-import { guardaGuard } from './protegida/guarda.guard';
+import {protegidaGuard} from './guarda/protegida.guard';
 
 export const routes: Routes = [
     { 
@@ -20,14 +19,14 @@ export const routes: Routes = [
     },
     {
         path: 'home',
-        component: HomeComponent
+        component: HomeComponent,
+        canActivate: [protegidaGuard]
+
     },
      {
         path: 'sala',
-        component: SalaComponent
-    },
-     { path: 'protegida', 
-        component: Protegida, 
-        canActivate: [guardaGuard]},
+        component: SalaComponent,
+        canActivate: [protegidaGuard]
 
+    }
 ];

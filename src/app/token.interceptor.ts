@@ -11,8 +11,7 @@ export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
         `Bearer ${localStorage.getItem('token')}`
       ),
     });
-    console.log('Passei por aqui');
-
+   
     return next(reqClone);
   }
   

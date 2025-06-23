@@ -3,7 +3,7 @@
         <div class="container">
             <h1>Forja ficha</h1>
             <h2 class = "textoCadastro">Cadastro</h2>
-            <form class ="areaCadastro" (submit)="Cadastrar()">
+            <form class ="areaCadastro" (ngSubmit)="Cadastro()">
 
                 <input type="text" placeholder="Usuário">
 
@@ -14,9 +14,8 @@
                 <input type="password" placeholder="Confirmar Senha">
                 
                 <div class="areaCadastro">
-                    <button type="submit" class = "cadastro"> Cadastre-se</button>
-                </div>
-                
+                    <button type="submit"> Cadastre-se</button>
+                </div>      
             </form>
         </div>
     </div>
