@@ -1,12 +1,14 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 
 @Component({
   selector: 'app-login',
-  imports: [RouterModule],
+  standalone: true,
+  imports: [RouterModule,ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.sass'
 })
@@ -14,29 +16,29 @@ export class LoginComponent implements OnInit{
   loginForm!: FormGroup;
 
   constructor(
+    private authService: AuthService,
     private fb: FormBuilder,
-    private client: HttpClient,
-    private router: Router
-  ) {}
+    private router: Router) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      usuario: ['', Validators.required],
-      senha: ['', Validators.required]
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]]
     });
   }
-
-  Login(): void {
+  
+  onLogin(){
     if (this.loginForm.valid) {
-      this.client
-        .post<{ access: string; refresh: string }>(
-          'http://localhost:8000/auth/jwt/create/',
-          this.loginForm.value
-        )
+      const formData = this.loginForm.value;
+
+      this.authService.login(formData)
         .subscribe({
           next: (resp) => {
-            localStorage.setItem('token', resp.access);
-            this.router.navigate(['/home']); // redirecionar para painel ou dashboard
+            console.log('Resposta login:', resp);
+            localStorage.setItem('access_token', resp.access);
+            localStorage.setItem('refresh_token', resp.refresh);
+
+            this.router.navigate(['/home']);
           },
           error: (err) => {
             console.error('Erro ao fazer login:', err);

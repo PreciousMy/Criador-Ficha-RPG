@@ -4,12 +4,12 @@
         <h1>Forja ficha</h1>
         <h2 class = "textoLogin">Login</h2>
       
-        <form class ="areaLogin" (ngSubmit)="Login()">
-          <input type="text" placeholder="Usuário">
+        <form class ="areaLogin" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+          <input type="text" placeholder="Usuário" formControlName = "username">
           
-          <input type="password" name="senha" placeholder="Senha">
+          <input type="password" name="senha" placeholder="Senha" formControlName = "password">
   
-          <button type="submit" class = "entrar" routerLink = "/home"> Entrar </button>
+          <button type="submit" class = "entrar"> Entrar </button>
           <div class="links">
             <a href="#">Esqueceu sua senha?</a>
             <a routerLink = "/cadastro" > Cadastre-se </a>

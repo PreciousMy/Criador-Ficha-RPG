@@ -1,39 +1,39 @@
-import { RouterModule } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RouterModule,Router } from '@angular/router';
+import { Component} from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 
 @Component({
   selector: 'app-cadastro',
-  imports: [RouterModule],
+  imports: [RouterModule,ReactiveFormsModule],
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.sass'
 })
 
-export class CadastroComponent implements OnInit {
-  cadastroForm!: FormGroup;
+export class CadastroComponent{
+  cadastroForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private client: HttpClient) {}
+  constructor(
+    private router:Router,
+    private fb: FormBuilder, 
+    private client: HttpClient){
+      this.cadastroForm = this.fb.group({
+        username: ['', Validators.required],
+        email: ['', Validators.required],
+        password: ['', Validators.required],
+        re_password: ['', Validators.required],
+      });
+    }
 
-  ngOnInit(): void {
-    this.cadastroForm = this.fb.group({
-      usuario: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      senha: ['', Validators.required],
-      conf_senha: ['', Validators.required],
-    });
-  }
-
-  Cadastro(): void {
+  onCadastro(){
     if (this.cadastroForm.valid) {
       const formData = this.cadastroForm.value;
-      this.client
-        .post<{ usuario: string; id: number }>(
-          'http://localhost:8000/auth/users/',
-          formData
-        )
-        .subscribe((resp) => console.log(resp));
+      this.client.post('http://localhost:8000/auth/users/',formData)
+      .subscribe((resp) => {
+        console.log("Cadastrado")
+        this.router.navigate(['/login'])
+      });
     }
   }
 }
