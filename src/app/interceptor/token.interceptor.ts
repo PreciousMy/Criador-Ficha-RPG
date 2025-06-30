@@ -1,14 +1,15 @@
 import { HttpInterceptorFn } from '@angular/common/http';
-import { Inject } from '@angular/core';
-import { Router } from '@angular/router';
 
 export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
   
-  if (localStorage.getItem('token')) {
+  
+  const accessToken = localStorage.getItem('access_token');
+
+  if (accessToken) {
     const reqClone = req.clone({
       headers: req.headers.set(
         'Authorization',
-        `Bearer ${localStorage.getItem('token')}`
+        `Bearer ${accessToken}`
       ),
     });
    

@@ -3,15 +3,15 @@
         <div class="container">
             <h1>Forja ficha</h1>
             <h2 class = "textoCadastro">Cadastro</h2>
-            <form class ="areaCadastro" (ngSubmit)="Cadastro()">
+            <form class ="areaCadastro" [formGroup]="cadastroForm" (ngSubmit)="onCadastro()">
 
-                <input type="text" placeholder="Usuário">
+                <input type="text" placeholder="Usuário" formControlName="username">
 
-                <input type="text" placeholder="E-mail">
+                <input type="text" placeholder="E-mail" formControlName="email">
         
-                <input type="password" placeholder="Senha">
+                <input type="password" placeholder="Senha" formControlName="password">
 
-                <input type="password" placeholder="Confirmar Senha">
+                <input type="password" placeholder="Confirmar Senha" formControlName="re_password">
                 
                 <div class="areaCadastro">
                     <button type="submit"> Cadastre-se</button>
