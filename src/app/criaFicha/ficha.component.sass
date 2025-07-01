@@ -1,0 +1,78 @@
+// Base styles for the container
+.container 
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('/imgs/telaFundo.png') no-repeat center center;
+    background-size: cover;
+    text-align: center; // This was duplicated, removed one
+    gap: 20px;
+    padding: 20px;
+
+
+// Styles for left and right columns
+.esquerda, .direita 
+    height: 90vh
+    max-height: 800px
+    border-radius: 10px
+    box-shadow: 4px 6px rgba(0, 0, 0, 0.1)
+    padding: 20px
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+
+
+.esquerda 
+    width: 20%; // Consider using flex-basis or simply flex for better responsiveness
+    background-color:rgb(245, 221, 169)
+    align-items: center;
+   
+
+
+.direita 
+    width: 80%; // Same as above, consider flex-basis
+    background-color: rgb(243, 237, 224);
+    overflow: hidden; // Keeps content within bounds, scroll handled by .verFicha
+
+
+
+// Adjust position for icons/menu
+.menu 
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin-bottom: 10px
+    margin-top: -10px // Sobe os ícones
+
+
+.botaoImg 
+    all: unset
+    cursor: pointer
+    font-size: 20px
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 45px
+    width: 45px
+    border-radius: 50%
+    
+
+// Specific styles for the D&D character sheet container
+.verFicha 
+    flex-grow: 1
+    overflow-y: auto
+    margin-top: 10px
+    text-align: left
+    line-height: 1.6
+    padding-right: 10px
+
+
+h1, h2
+    font-family: girassol
+    color: rgb(172, 28, 28)
+    margin: 10px 0
+
+p
+    font-family: libre-bold

@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { SalaComponent } from './sala/sala.component';
 import {authGuard} from './guard/auth.guard';
+import { FichaComponent } from './criaFicha/ficha.component';
 
 export const routes: Routes = [
     { 
@@ -28,5 +29,10 @@ export const routes: Routes = [
         component: SalaComponent,
         canActivate: [authGuard]
 
-    }
+    },
+         {
+        path: 'ficha',
+        component: FichaComponent,
+
+    } 
 ];
