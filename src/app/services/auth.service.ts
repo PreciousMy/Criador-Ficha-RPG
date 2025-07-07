@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { ficha } from '../interface/ficha';
 
 @Injectable({
   providedIn: 'root'
@@ -14,14 +15,14 @@ export class AuthService {
     return !!localStorage.getItem('access_token');
   }
 
-  getLoggedUser(): Observable<({id: number; username: string; email:string})> {
+  getLoggedUser(): Observable<({id: number; username: string; email:string; fichas: ficha[]})> {
     const token = localStorage.getItem('access_token');
 
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`
     });
 
-    return this.http.get<({id: number; username: string; email:string})>('http://localhost:8000/auth/users/me/', {headers});
+    return this.http.get<({id: number; username: string; email:string; fichas: ficha[]})>('http://localhost:8000/auth/users/me/', {headers});
   }
 
   login(credentials: {username: string, password: string}) {
