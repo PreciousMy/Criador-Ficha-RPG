@@ -8,8 +8,8 @@
             </button>
             <div>
                 <img src="/imgs/fotoDefault.png" width="100" height="100">
-                <h2>Nome Usuario</h2>
-                <p>email&#64;gmail.com</p>
+                <h2>{{ userData?.username }}</h2>
+                <p>{{ userData?.email }}</p>
             </div>
             <button class="botaoImg" routerLink = "/login" >
                   <img src="/icon/saida.svg" alt="Editar" width="24" height="24">
@@ -19,9 +19,11 @@
         
         <div class="listaFichaE">
             <h2>Fichas Criadas</h2>
-            <ol>
-                <li onclick=""> ficha 1 </li>
-                <li onclick=""> ficha 1 </li>
+            <ol *ngIf="fichas && fichas.length > 0">
+                <li *ngFor="let ficha of fichas" (click)="selecionarFicha(ficha)" 
+                    [class.selecionado]="ficha.id_ficha === fichaSelecionada?.id_ficha"> 
+                    {{ ficha.nomePerso }}
+                </li>
             </ol>
         </div>
         <div class = "menu">

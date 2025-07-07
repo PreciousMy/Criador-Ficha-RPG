@@ -22,17 +22,15 @@ export const routes: Routes = [
         path: 'home',
         component: HomeComponent,
         canActivate: [authGuard]
-
     },
      {
         path: 'sala',
         component: SalaComponent,
         canActivate: [authGuard]
-
     },
-         {
+    {
         path: 'ficha',
         component: FichaComponent,
-
+        canActivate: [authGuard]
     } 
 ];
