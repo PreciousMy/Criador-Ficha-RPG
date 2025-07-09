@@ -23,14 +23,15 @@
 
 .esquerda, .direita
     width: 20%
-    background-color:rgb(245, 221, 169)
     flex: 30%
 
 
 .centro
-    width: 55%
+    width: 56%
     background-color: rgb(243, 237, 224)
     overflow: hidden
+    flex: 50%
+    overflow-y: auto
 
 // Ajustar posição dos ícones
 .menu
@@ -53,6 +54,8 @@
 
 
 .listaFichaE, .listaFichaD
+    border-top: 2px solid rgba(133, 105, 14, 0.73)
+    border-bottom: 2px solid rgba(133, 105, 14, 0.73)
     flex-grow: 1
     overflow-y: auto
     margin: 20px
@@ -113,3 +116,138 @@ h1, h2
 
 p
     font-family: libre-bold
+
+
+// Mostrar Ficha
+// Cabeçalho
+.fichaHeader
+  text-align: center
+  border-bottom: 2px solid #ccc
+  padding-bottom: 10px
+  margin-bottom: 20px
+
+  h1
+    margin: 0
+    font-size: 2.5em
+
+  .ficha-subheader
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-around
+    font-style: italic
+    color: #555
+    gap: 15px
+
+// Corpo da ficha
+
+.fichaBody
+  display: flex
+  flex-wrap: wrap
+  gap: 20px
+
+.coluna-atributos
+  flex: 1
+  min-width: 550px
+
+.coluna-principal
+  flex: 2
+  min-width: 300px
+
+.stats-grid
+  display: grid
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr))
+  gap: 10px
+  margin-bottom: 20px
+
+.boxAtributo
+  border: 1px solid #ddd
+  border-radius: 8px
+  text-align: center
+  padding-bottom: 10px
+
+  h4
+    margin: 0 0 5px 0
+    font-size: 0.9em
+    background-color: #eee
+    padding: 5px
+    border-radius: 4px 4px 0 0
+    font-family: libre-bold
+
+  .modificador
+    font-size: 1.8em
+    font-weight: bold
+    display: block
+
+  .score
+    color: #666
+
+.combat-stats
+  display: flex
+  justify-content: space-around
+  text-align: center
+  margin-bottom: 15px
+  flex-wrap: wrap
+  gap: 10px
+
+.combat-box
+  border: 1px solid #ddd
+  padding: 10px
+  border-radius: 8px
+  flex: 1
+  min-width: 120px
+
+  span
+    font-size: 1.5em
+    font-weight: bold
+    display: block
+
+.textBox
+  border: 1px solid #eee
+  background-color: rgba(255,255,255,0.4)
+  padding: 15px
+  border-radius: 5px
+  margin-bottom: 15px
+
+  h3, h4
+    margin-top: 0
+    border-bottom: 1px solid #ddd
+    padding-bottom: 5px
+  
+  p
+    white-space: pre-wrap
+    margin: 0
+
+.personalidade
+  display: grid
+  grid-template-columns: 1fr 1fr
+  gap: 15px
+
+
+
+// Editor Perfil
+
+.editorContainer
+  display: flex
+  justify-content: space-between
+  align-items: center
+  width: 100%
+
+.camposEdicao
+  display: flex
+  flex-direction: column
+  align-items: center
+  gap: 8px
+
+  input
+    width: 100%
+    padding: 8px 12px
+    border: 1px solid #ccc
+    border-radius: 5px
+    font-family: libre-bold
+    text-align: center
+    background-color: rgba(255, 255, 255, 0.57)
+
+// formulário for inválido
+.botaoImg[disabled]
+  opacity: 0.5
+  cursor: not-allowed

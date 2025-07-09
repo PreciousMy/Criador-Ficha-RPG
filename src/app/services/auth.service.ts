@@ -30,6 +30,16 @@ export class AuthService {
       ('http://localhost:8000/auth/jwt/create/', credentials);
   }
 
+  updateUsuario(userData: { username?: string, email?: string }): Observable<{username: string; email:string}> {
+    const token = localStorage.getItem('access_token');
+    
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+
+    return this.http.patch<{username: string; email:string}>('http://localhost:8000/auth/users/me/', userData, { headers });
+  }
+
   logout() {
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');

@@ -3,19 +3,42 @@
     <div class = "esquerda"> 
 
         <div class="menu">
-            <button class="botaoImg">
-                <img src="/icon/editar.svg" alt="Editar" width="24" height="24">
-            </button>
-            <div>
-                <img src="/imgs/fotoDefault.png" width="100" height="100">
-                <h2>{{ userData?.username }}</h2>
-                <p>{{ userData?.email }}</p>
-            </div>
-            <button class="botaoImg" routerLink = "/login" >
-                  <img src="/icon/saida.svg" alt="Editar" width="24" height="24">
-            </button>
+  
+            <ng-container *ngIf="editando; else displayMode">
+                <form [formGroup]="editor" class="editorContainer">
+                    <button type="button" class="botaoImg" (click)="cancelarEdit()">
+                        <img src="/icon/undo.svg" alt="Cancelar" width="24" height="24">
+                    </button>
+                    
+                    <div class="camposEdicao">
+                        <img src="/imgs/fotoDefault.png" width="100" height="100">
+                        <input type="text" formControlName="username" placeholder="Nome de usuário">
+                        <input type="email" formControlName="email" placeholder="Email">
+                    </div>
+
+                    <button type="button" class="botaoImg" (click)="salvarEdit()" [disabled]="editor.invalid">
+                        <img src="/icon/verificar.svg" alt="Salvar" width="24" height="24">
+                    </button>
+                </form>
+            </ng-container>
+
+            <ng-template #displayMode>
+                <button class="botaoImg" (click)="edicaoPerfil()">
+                    <img src="/icon/editar.svg" alt="Editar" width="24" height="24">
+                </button>
+                
+                <div *ngIf="userData">
+                    <img src="/imgs/fotoDefault.png" width="100" height="100">
+                    <h2>{{ userData.username }}</h2>
+                    <p>{{ userData.email }}</p>
+                </div>
+                
+                <button class="botaoImg" (click)="logout()">
+                    <img src="/icon/saida.svg" alt="Sair" width="24" height="24">
+                </button>
+            </ng-template>
+
         </div>
-        <router-outlet></router-outlet>
         
         <div class="listaFichaE">
             <h2>Fichas Criadas</h2>
@@ -27,82 +50,135 @@
             </ol>
         </div>
         <div class = "menu">
-          <button class="botaoImg">
+            <button class="botaoImg">
                 <img src="/icon/excluir.svg" alt="Editar" width="24" height="24">
             </button>
 
-        <button class="add" onclick="">+</button>
+            <button class="add" onclick="">+</button>
 
-          <button class="botaoImg">
+            <button class="botaoImg">
                 <img src="/icon/verificar.svg" alt="Editar" width="24" height="24">
             </button>  
             </div>
     </div>
     
-    <div class = "centro">
-        <h1>Nome Ficha</h1>
-        <div class="verFicha">
-            <p> 
-                O mundo está mudado.<br>
-                Eu sinto isso na água.<br>
-                Eu sinto isso na terra.<br>
-                Eu farejo isso no ar.<br>
-                Muito do que já existiu se perdeu...<br>
-                Pois não há mais ninguém vivo que se lembre.<br>
-                Tudo começou com a forja dos grandes anéis.<br>
-                Três foram dados aos Elfos imortais... Os mais sábios e belos de todos os seres.<br>
-                Sete, aos senhores dos Anões... Grandes mineradores e artífices dos corredores das montanhas.<br>
-                E nove, nove anéis foram dados à raça dos homens... Que, acima de tudo desejavam poder.<br>
-                Pois, dentro desses anéis foi selada a força e a vontade para governar cada raça.<br>
-                Mas todos foram enganados.<br>
-                Pois outro anel foi forjado.<br>
-                Na terra de Mordor, nas chamas da montanha da perdição Sauron, o Senhor do Escuro forjou em segredo um anel mestre, para controlar todos os outros.
-                E nesse anel, ele derramou sua crueldade, sua malícia e sua vontade de dominar todas as formas de vida.<br>
-                Um anel para todas governar.<br>
-                Uma por uma as terras livres da Terra-Média submeteram-se ao poder do anel.<br>
-                Mas houve alguns que resistiram.<br>
-                A última aliança entre Homens e Elfos marcgou contra os exércitos de Mordor.<br>
-                E, na montanha da perdição, lutou pela liberdade da Terra-Média.<br>
-                A vitória estava próxima.<br>
-                Mas o poder do anel não podia ser destruido.<br>
-                Foi nesse momento, quando toda a esperança havia minguado que Isildur, o filgo do rei ergueu a espada do sei pai.<br>
-                Sauron, o inimigo dos povos livres da Terra-Média foi derrotado.<br> 
-                O mundo está mudado.<br>
-                Eu sinto isso na água.<br>
-                Eu sinto isso na terra.<br>
-                Eu farejo isso no ar.<br>
-                Muito do que já existiu se perdeu...<br>
-                Pois não há mais ninguém vivo que se lembre.<br>
-                Tudo começou com a forja dos grandes anéis.<br>
-                Três foram dados aos Elfos imortais... Os mais sábios e belos de todos os seres.<br>
-                Sete, aos senhores dos Anões... Grandes mineradores e artífices dos corredores das montanhas.<br>
-                E nove, nove anéis foram dados à raça dos homens... Que, acima de tudo desejavam poder.<br>
-                Pois, dentro desses anéis foi selada a força e a vontade para governar cada raça.<br>
-                Mas todos foram enganados.<br>
-                Pois outro anel foi forjado.<br>
-                Na terra de Mordor, nas chamas da montanha da perdição Sauron, o Senhor do Escuro forjou em segredo um anel mestre, para controlar todos os outros.
-                E nesse anel, ele derramou sua crueldade, sua malícia e sua vontade de dominar todas as formas de vida.<br>
-                Um anel para todas governar.<br>
-                Uma por uma as terras livres da Terra-Média submeteram-se ao poder do anel.<br>
-                Mas houve alguns que resistiram.<br>
-                A última aliança entre Homens e Elfos marcgou contra os exércitos de Mordor.<br>
-                E, na montanha da perdição, lutou pela liberdade da Terra-Média.<br>
-                A vitória estava próxima.<br>
-                Mas o poder do anel não podia ser destruido.<br>
-                Foi nesse momento, quando toda a esperança havia minguado que Isildur, o filgo do rei ergueu a espada do sei pai.<br>
-                Sauron, o inimigo dos povos livres da Terra-Média foi derrotado.<br> 
-            </p>
+    <div class="centro" *ngIf="fichaSelecionada">
+
+        <div class="fichaHeader">
+            <h1>{{ fichaSelecionada.nomePerso }}</h1>
+            <div class="ficha-subheader">
+                <span>{{ fichaSelecionada.raca }} {{ fichaSelecionada.classe }}, Nível {{ fichaSelecionada.nivel }}</span>
+                <span>Alinhamento: {{ fichaSelecionada.alinhamento }}</span>
+                <span>EXP: {{ fichaSelecionada.exp }}</span>
+            </div>
         </div>
+
+        <div class="fichaBody">
+            <div class="coluna-atributos">
+                
+                <div class="stats-grid">
+                    <div class="boxAtributo">
+                        <h4>Força</h4>
+                        <span class="modificador">{{ fichaSelecionada.forcMod }}</span>
+                        <span class="score">{{ fichaSelecionada.forc }}</span>
+                    </div>
+                    <div class="boxAtributo">
+                        <h4>Destreza</h4>
+                        <span class="modificador">{{ fichaSelecionada.destMod }}</span>
+                        <span class="score">{{ fichaSelecionada.dest }}</span>
+                    </div>
+                    <div class="boxAtributo">
+                        <h4>Constituição</h4>
+                        <span class="modificador">{{ fichaSelecionada.constiMod }}</span>
+                        <span class="score">{{ fichaSelecionada.consti }}</span>
+                    </div>
+                    <div class="boxAtributo">
+                        <h4>Inteligência</h4>
+                        <span class="modificador">{{ fichaSelecionada.inteMod }}</span>
+                        <span class="score">{{ fichaSelecionada.inte }}</span>
+                    </div>
+                    <div class="boxAtributo">
+                        <h4>Sabedoria</h4>
+                        <span class="modificador">{{ fichaSelecionada.sabMod }}</span>
+                        <span class="score">{{ fichaSelecionada.sab }}</span>
+                    </div>
+                    <div class="boxAtributo">
+                        <h4>Carisma</h4>
+                        <span class="modificador">{{ fichaSelecionada.carMod }}</span>
+                        <span class="score">{{ fichaSelecionada.car }}</span>
+                    </div>
+                </div>
+
+                <div class="textBox">
+                    <h3>Idiomas e Proficiências</h3>
+                    <p>{{ fichaSelecionada.idiomas_Proeficiencias }}</p>
+                </div>
+            </div>
+
+            <div class="coluna-principal">
+                
+                <div class="combat-stats">
+                    <div class="combat-box"><span>{{ fichaSelecionada.pvTotais }}</span> Pontos de Vida</div>
+                    <div class="combat-box"><span>{{ fichaSelecionada.iniciativa }}</span> Iniciativa</div>
+                    <div class="combat-box"><span>{{ fichaSelecionada.deslocamento }}m</span> Deslocamento</div>
+                </div>
+                <div class="combat-stats">
+                    <div class="combat-box"><span>{{ fichaSelecionada.dadoVida }}</span> Dado de Vida</div>
+                    <div class="combat-box"><span>{{ fichaSelecionada.bonusProef }}</span> Bônus de Prof.</div>
+                    <div class="combat-box"><span>{{ fichaSelecionada.sabPassiva }}</span> Sabedoria Passiva</div>
+                </div>
+
+                <div class="textBox">
+                    <h3>Ataques e Magias</h3>
+                    <p>{{ fichaSelecionada.descAtaque }}</p>
+                </div>
+                <div class="textBox">
+                    <h3>Equipamento</h3>
+                    <p>{{ fichaSelecionada.descEquip }}</p>
+                </div>
+
+                <div class="personalidade">
+                    <div class="textBox">
+                        <h4>Traços de Personalidade</h4>
+                        <p>{{ fichaSelecionada.tracosPerso }}</p>
+                    </div>
+                    <div class="textBox">
+                        <h4>Ideais</h4>
+                        <p>{{ fichaSelecionada.ideais }}</p>
+                    </div>
+                    <div class="textBox">
+                        <h4>Vínculos</h4>
+                        <p>{{ fichaSelecionada.vinculos }}</p>
+                    </div>
+                    <div class="textBox">
+                        <h4>Fraquezas</h4>
+                        <p>{{ fichaSelecionada.fraquezas }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="centro" *ngIf="!fichaSelecionada">
+        <h1>Selecione uma ficha</h1>
+        <p>Clique em uma das suas fichas na lista à esquerda para ver os detalhes.</p>
     </div>
 
     <div class = "direita">
         <h1> Fichas Publicas </h1>
         <div class="listaFichaD">
-            <ol>
-                <li onclick=""> ficha 1 </li>
-                <li onclick=""> ficha 1 </li>
+            
+            <ol *ngIf="fichasPublicas.length > 0">
+                <li *ngFor="let fichaPublica of fichasPublicas" 
+                    (click)="selecionarFicha(fichaPublica)"
+                    [class.selecionado]="fichaPublica.id_ficha === fichaSelecionada?.id_ficha">
+                    {{ fichaPublica.nomePerso }}
+                </li>
             </ol>
+
+            <div *ngIf="fichasPublicas.length === 0">
+                <p>Nenhuma ficha pública encontrada.</p>
+            </div>
         </div>
-    </div>
 
 </div>
