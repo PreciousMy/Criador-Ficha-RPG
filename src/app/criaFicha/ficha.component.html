@@ -11,9 +11,16 @@
                 <p>Criando Ficha...</p>
             </div>
         </div>
+        <div class="headerDados">
+            <label>Rolagem Dados</label>
+        </div>
         <div class="dado-container">
             <div class="dado-inputs">
+                <label>Qtd.</label>
                 <input type="number" [(ngModel)]="quantidade" min="1" max="10" placeholder="Qtd">
+            </div>
+            <div class="dado-inputs">
+                <label>Tipo</label>
                 <select [(ngModel)]="tiposDado">
                     <option value="4">D4</option>
                     <option value="6">D6</option>
@@ -23,6 +30,9 @@
                     <option value="20">D20</option>
 		            <option value="100" selected>D100</option>
                 </select>
+            </div>
+            <div class="dado-inputs">
+                <label>Mod.</label>
                 <input type="number" [(ngModel)]="modificador" placeholder="Mod">
             </div>
             

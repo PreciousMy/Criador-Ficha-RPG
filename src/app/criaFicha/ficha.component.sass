@@ -34,8 +34,8 @@
     overflow-x: auto
 
 .menu 
+    margin-right: 30px
     display: flex
-    justify-content: space-between
     align-items: center
     margin-bottom: 10px
     margin-top: -10px
@@ -85,7 +85,7 @@
     cursor: pointer
     transition: opacity 0.3s ease
     &:hover
-        background-color: darken(#ce5454, 10%)
+        background-color: rgb(206, 84, 84)
 
 .botaoSalvar
     &[disabled]
@@ -201,30 +201,49 @@ h1, h2
 p
     font-family: libre-bold
 
+
+// Dado
+
+.headerDados
+    margin-top: 70px
+    font-family: girassol
+    color: rgb(172, 28, 28)
+    font-weight: bold
+    font-size: 30px
+
 .dado-container
     display: flex
     flex-direction: column
-    gap: 8px
-    margin-top: 15px
+    gap: 10px
+    margin-top: 20px
     padding: 10px
-    background-color: rgba(255, 255, 255, 0.1)
-    border-radius: 8px
-    border: 1px solid rgba(172, 28, 28, 0.3)
+    background-color: rgba(241, 217, 171, 0.452)
+    border-radius: 10px
+    border: 2px solid rgb(172, 28, 28)
     width: 100%
-    max-width: 160px
+    max-width: 127px
 
 .dado-inputs
     display: flex
-    gap: 4px
+    gap: 1px
+    flex-direction: column
     
+    label
+        font-weight: bold
+        margin-bottom: 5px
+        font-size: 0.9em
+        color: rgb(172, 28, 28)
+        text-align: center
+        font-family: libre-bold
     input, select
-        flex: 1
-        padding: 4px
+        box-sizing: border-box
+        width: 100%
+        padding: 6px
         border: 1px solid rgb(172, 28, 28)
         border-radius: 4px
         background-color: rgb(245, 221, 169)
         color: rgb(172, 28, 28)
-        font-size: 11px
+        font-size: 15px
         font-weight: bold
         text-align: center
         
@@ -233,10 +252,10 @@ p
             border-color: rgb(140, 20, 20)
     
     input[type="number"]
-        width: 30px
+        width: 100px
         
     select
-        width: 40px
+        width: 100px
 
 .dado-btn
     padding: 6px 12px
@@ -248,6 +267,7 @@ p
     font-weight: bold
     cursor: pointer
     transition: background-color 0.2s
+    width: 100px
     
     &:hover:not(:disabled)
         background-color: rgb(140, 20, 20)
