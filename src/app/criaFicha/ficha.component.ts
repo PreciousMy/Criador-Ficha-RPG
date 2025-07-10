@@ -6,17 +6,29 @@ import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FichaService } from '../services/ficha.service';
 import { AuthService } from '../services/auth.service';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-criar-ficha',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule,FormsModule],
   templateUrl: './ficha.component.html',
   styleUrls: ['./ficha.component.sass']
 })
 export class FichaComponent implements OnInit {
+
+
   userData: any | null = null;
   fichaForm: FormGroup;
+
+  // Propriedades do dado
+  quantidade: number = 1;
+  tiposDado: number = 100;
+  modificador: number = 0;
+  resultadoTotal: number | null = null;
+  detalhes: string = '';
+  isRolling: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -100,7 +112,6 @@ export class FichaComponent implements OnInit {
     this.loadDadosUsuario();
   }
 
-
   loadDadosUsuario(){
       this.authService.getLoggedUser().subscribe({
         next: (data) => {
@@ -113,7 +124,7 @@ export class FichaComponent implements OnInit {
         }
       });
   }
-  
+
   setupAttributeCalculations(): void {
     const attributes = ['forc', 'dest', 'consti', 'inte', 'sab', 'car'];
     attributes.forEach(attr => {
@@ -122,6 +133,48 @@ export class FichaComponent implements OnInit {
         this.fichaForm.get(`${attr}Mod`)?.setValue(modifier, { emitEvent: false });
       });
     });
+  }
+
+  
+  // Método para rolar o dado
+  rolarDado(): void {
+    if (this.isRolling) return;
+    
+    this.isRolling = true;
+    
+    // Simula um pequeno delay para a experiência do usuário
+    setTimeout(() => {
+      const resultados: number[] = [];
+      
+      // Rola a quantidade especificada de dados
+      for (let i = 0; i < this.quantidade; i++) {
+        resultados.push(Math.floor(Math.random() * this.tiposDado) + 1);
+      }
+      
+      // Calcula o total
+      const somaResultados = resultados.reduce((acc, curr) => acc + curr, 0);
+      this.resultadoTotal = somaResultados + this.modificador;
+      
+      // Cria os detalhes da rolagem
+      if (this.quantidade > 1 || this.modificador !== 0) {
+        let detalhesArray = [];
+        
+        if (this.quantidade > 1) {
+          detalhesArray.push(`(${resultados.join(' + ')})`);
+        }
+        
+        if (this.modificador !== 0) {
+          const operador = this.modificador > 0 ? '+' : '';
+          detalhesArray.push(`${operador}${this.modificador}`);
+        }
+        
+        this.detalhes = detalhesArray.join(' ');
+      } else {
+        this.detalhes = '';
+      }
+      
+      this.isRolling = false;
+    }, 300);
   }
 
   onSubmit(): void {

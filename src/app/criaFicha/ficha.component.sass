@@ -200,3 +200,76 @@ h1, h2
     margin: 10px 0
 p
     font-family: libre-bold
+
+.dado-container
+    display: flex
+    flex-direction: column
+    gap: 8px
+    margin-top: 15px
+    padding: 10px
+    background-color: rgba(255, 255, 255, 0.1)
+    border-radius: 8px
+    border: 1px solid rgba(172, 28, 28, 0.3)
+    width: 100%
+    max-width: 160px
+
+.dado-inputs
+    display: flex
+    gap: 4px
+    
+    input, select
+        flex: 1
+        padding: 4px
+        border: 1px solid rgb(172, 28, 28)
+        border-radius: 4px
+        background-color: rgb(245, 221, 169)
+        color: rgb(172, 28, 28)
+        font-size: 11px
+        font-weight: bold
+        text-align: center
+        
+        &:focus
+            outline: none
+            border-color: rgb(140, 20, 20)
+    
+    input[type="number"]
+        width: 30px
+        
+    select
+        width: 40px
+
+.dado-btn
+    padding: 6px 12px
+    background-color: rgb(172, 28, 28)
+    color: white
+    border: none
+    border-radius: 4px
+    font-size: 12px
+    font-weight: bold
+    cursor: pointer
+    transition: background-color 0.2s
+    
+    &:hover:not(:disabled)
+        background-color: rgb(140, 20, 20)
+    
+    &:disabled
+        background-color: #ccc
+        cursor: not-allowed
+
+.dado-resultado
+    text-align: center
+    padding: 6px
+    background-color: rgba(255, 255, 255, 0.8)
+    border-radius: 4px
+    border: 1px solid rgba(172, 28, 28, 0.5)
+    
+    strong
+        font-size: 16px
+        color: rgb(172, 28, 28)
+        font-family: girassol
+        
+    small
+        display: block
+        font-size: 10px
+        color: rgb(140, 20, 20)
+        margin-top: 2px

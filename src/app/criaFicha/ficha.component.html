@@ -11,6 +11,30 @@
                 <p>Criando Ficha...</p>
             </div>
         </div>
+        <div class="dado-container">
+            <div class="dado-inputs">
+                <input type="number" [(ngModel)]="quantidade" min="1" max="10" placeholder="Qtd">
+                <select [(ngModel)]="tiposDado">
+                    <option value="4">D4</option>
+                    <option value="6">D6</option>
+                    <option value="8">D8</option>
+                    <option value="10">D10</option>
+                    <option value="12">D12</option>
+                    <option value="20">D20</option>
+		            <option value="100" selected>D100</option>
+                </select>
+                <input type="number" [(ngModel)]="modificador" placeholder="Mod">
+            </div>
+            
+            <button class="dado-btn" (click)="rolarDado()" [disabled]="isRolling">
+                {{ isRolling ? 'Rolando...' : 'Rolar' }}
+            </button>
+            
+            <div class="dado-resultado" *ngIf="resultadoTotal !== null">
+                <strong>{{ resultadoTotal }}</strong>
+                <small *ngIf="detalhes">{{ detalhes }}</small>
+            </div>
+        </div>
     </div>
 
     <div class="direita">
