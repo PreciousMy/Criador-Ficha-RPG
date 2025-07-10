@@ -1,371 +1,312 @@
-<div class = "container"> 
+<div class="container">
 
-    <div class = "esquerda"> 
-
+    <div class="esquerda">
         <div class="menu">
-            <button class="botaoImg" routerLink = "/home">
-                <img src="/icon/voltar.svg" alt="Editar" width="24" height="24">
+            <button class="botaoImg" routerLink="/home">
+                <img src="/icon/voltar.svg" alt="Voltar" width="24" height="24">
             </button>
-            <div>
+            <div *ngIf="userData">
                 <img src="/imgs/fotoDefault.png" width="100" height="100">
-                <h2>Nome Usuario</h2>
-                <p>email&#64;gmail.com</p>
+                <h2>{{ userData.username }}</h2>
+                <p>Criando Ficha...</p>
             </div>
         </div>
     </div>
-    
-    <div class = "direita">
-        <h1>Nome Ficha</h1>
-        <div class="verFicha">
-           
-    <div class = "centro">
-            <div>
-                                <label for="nome-personagem">NOME DO PERSONAGEM</label>
-                                <input type="text" id="nome-personagem">
-                            </div>
-                            <div>
-                                <label for="classe-nivel">CLASSE E NÍVEL</label>
-                                <input type="text" id="classe-nivel">
-                            </div>
-                            <div>
-                                <label for="antecedente">ANTECEDENTE</label>
-                                <input type="text" id="antecedente">
-                            </div>
-                            <div>
-                                <label for="nome-jogador">NOME DO JOGADOR</label>
-                                <input type="text" id="nome-jogador">
-                            </div>
 
-                              <div>
-                                <label for="raca">RAÇA</label>
-                                <input type="text" id="raca">
-                            </div>
-                            <div>
-                                <label for="tendencia">TENDÊNCIA</label>
-                                <input type="text" id="tendencia">
-                            </div>
-                            <div>
-                                <label for="pontos-experiencia">PONTOS DE EXPERIÊNCIA</label>
-                                <input type="number" id="pontos-experiencia">
-                            </div>
-                            <h2>ATRIBUTOS</h2>
-                            <div>
-                                <label for="forca">FORÇA</label>
-                                <input type="number" id="forca">
-                                <input type="text" placeholder="Modificador">
-                            </div>
-                            <div>
-                                <label for="destreza">DESTREZA</label>
-                                <input type="number" id="destreza">
-                                <input type="text" placeholder="Modificador">
-                            </div>
-                            <div>
-                                <label for="constituicao">CONSTITUIÇÃO</label>
-                                <input type="number" id="constituicao">
-                                <input type="text" placeholder="Modificador">
-                            </div>
-                            <div>
-                                <label for="inteligencia">INTELIGÊNCIA</label>
-                                <input type="number" id="inteligencia">
-                                <input type="text" placeholder="Modificador">
-                            </div>
-                            <div>
-                                <label for="sabedoria">SABEDORIA</label>
-                                <input type="number" id="sabedoria">
-                                <input type="text" placeholder="Modificador">
-                            </div>
-                            <div >
-                                <label for="carisma">CARISMA</label>
-                                <input type="number" id="carisma">
-                                <input type="text" placeholder="Modificador">
-                            </div>
+    <div class="direita">
+        <div class="criacaoBody">
+            <form [formGroup]="fichaForm" (ngSubmit)="onSubmit()">
+                <div class="header">
+                    <h1>Crie sua Ficha</h1>
+                </div>
 
-                             <div>
-                                <label for="inspiracao">INSPIRAÇÃO</label>
-                                <input type="checkbox" id="inspiracao">
-                            </div>
-                            <div>
-                                <label for="bonus-proficiencia">BÔNUS DE PROFICIÊNCIA</label>
-                                <input type="text" id="bonus-proficiencia">
-                            </div>
-                            <h2>TESTES DE RESISTÊNCIA</h2>
-                            <div>
-                                <div class="checkbox-item"><input type="checkbox"> <label>Força</label></div>
-                                <div class="checkbox-item"><input type="checkbox"> <label>Destreza</label></div>
-                                <div class="checkbox-item"><input type="checkbox"> <label>Constituição</label></div>
-                                <div class="checkbox-item"><input type="checkbox"> <label>Inteligência</label></div>
-                                <div class="checkbox-item"><input type="checkbox"> <label>Sabedoria</label></div>
-                                <div class="checkbox-item"><input type="checkbox"> <label>Carisma</label></div>
-                            </div>
-                         <h2>PERÍCIAS</h2>
-                            <div class="checkbox-group">
-                                <div class="checkbox-item"><input type="checkbox"> <label>Acrobacia (Des)</label></div>
-                                <div class="checkbox-item"><input type="checkbox"> <label>Arcanismo (Int)</label></div>
-                                <div class="checkbox-item"><input type="checkbox"> <label>Atletismo (For)</label></div>
-                                <div class="checkbox-item"><input type="checkbox"> <label>Atuação (Car)</label></div>
-                                <div class="checkbox-item"><input type="checkbox"> <label>Blefar (Car)</label></div>
-                                <div class="checkbox-item"><input type="checkbox"> <label>Furtividade (Des)</label></div>
-                                <div class="checkbox-item"><input type="checkbox"> <label>História (Int)</label></div>
-                                <div class="checkbox-item"><input type="checkbox"> <label>Intimidação (Car)</label></div>
-                                <div class="checkbox-item"><input type="checkbox"> <label>Intuição (Sab)</label></div>
-                                <div class="checkbox-item"><input type="checkbox"> <label>Investigação (Int)</label></div>
-                                <div class="checkbox-item"><input type="checkbox"> <label>Lidar com Animais (Sab)</label></div>
-                                <div class="checkbox-item"><input type="checkbox"> <label>Medicina (Sab)</label></div>
-                                <div class="checkbox-item"><input type="checkbox"> <label>Natureza (Int)</label></div>
-                                <div class="checkbox-item"><input type="checkbox"> <label>Percepção (Sab)</label></div>
-                                <div class="checkbox-item"><input type="checkbox"> <label>Persuasão (Car)</label></div>
-                                <div class="checkbox-item"><input type="checkbox"> <label>Prestidigitação (Des)</label></div>
-                                <div class="checkbox-item"><input type="checkbox"> <label>Religião (Int)</label></div>
-                                <div class="checkbox-item"><input type="checkbox"> <label>Sobrevivência (Sab)</label></div>
-                            </div>
-                            <div>
-                            <label for="sabedoria-passiva">SABEDORIA PASSIVA (PERCEPÇÃO)</label>
-                            <input type="number" id="sabedoria-passiva">
+                <div class="formulario">
+                    <h2>Informações Básicas</h2>
+                    <div class="entradaTextoGrid">
+                        <div class="form-field">
+                            <label>Nome do Personagem</label>
+                            <input type="text" formControlName="nomePerso">
+                            <p class="helper-text">O nome que seu personagem atende.</p>
                         </div>
-
-                        <div>
-                            <h2>IDIOMAS E OUTRAS PROFICIÊNCIAS</h2>
-                            <textarea></textarea>
+                        <div class="form-field">
+                            <label>Classe</label>
+                            <input type="text" formControlName="classe">
+                            <p class="helper-text">
+                                A vocação do seu personagem (Guerreiro, Mago...). Define suasprincipais habilidades.
+                            </p>
+                        </div>
+                        <div class="form-field">
+                            <label>Nível</label>
+                            <input type="number" formControlName="nivel">
+                            <p class="helper-text">Começa em 1. Aumenta com EXP e concede novas habilidades.</p>
+                        </div>
+                        <div class="form-field">
+                            <label>Raça</label>
+                            <input type="text" formControlName="raca">
+                            <p class="helper-text">A espécie do seu personagem (Humano, Elfo...). Concede traços e
+                                bônus.</p>
+                        </div>
+                        <div class="form-field">
+                            <label>Antecedente</label>
+                            <input type="text" formControlName="antecendente">
+                            <p class="helper-text">O que ele fazia antes (Soldado, Sábio...). Concede proficiências.</p>
+                        </div>
+                        <div class="form-field">
+                            <label>Alinhamento</label>
+                            <input type="text" formControlName="alinhamento">
+                            <p class="helper-text">A bússola moral (Leal e Bom, Caótico e Neutro...).</p>
                         </div>
                     </div>
+                </div>
 
-                      <div>
-                                <label for="ca">CLASSE DE ARMADURA</label>
-                                <input type="number" id="ca" class="small-input">
-                            </div>
-                            <div>
-                                <label for="iniciativa">INICIATIVA</label>
-                                <input type="number" id="iniciativa" class="small-input">
-                            </div>
-                            <div>
-                                <label for="desloc">DESLOC.</label>
-                                <input type="number" id="desloc" class="small-input">
-                            </div>
-                               <div>
-                            <label for="pv-totais">PV TOTAIS</label>
-                            <input type="number" id="pv-totais">
-
-                            <label for="pv-atuais">PONTOS DE VIDA ATUAIS</label>
-                            <input type="number" id="pv-atuais">
-
-                            <label for="pv-temporarios">PONTOS DE VIDA TEMPORÁRIOS</label>
-                            <input type="number" id="pv-temporarios">
+                <div class="formulario">
+                    <h2>Atributos</h2>
+                    <p class="helper-text" style="margin-top: -15px; margin-bottom: 20px;">
+                        Estes são os seis atributos base. A pontuação padrão é 10 (modificador +0). Role dados (ex: 4d6,
+                        some os 3 maiores) ou use a "Compra de Pontos" do Livro do Jogador. O modificador é calculado
+                        automaticamente: (Valor - 10) / 2.
+                    </p>
+                    <div class="atributosGrid">
+                        <div class="caixaDeAtributos">
+                            <label title="Mede o poder físico. Usado para ataques corpo a corpo.">Força</label>
+                            <input type="number" formControlName="forc" class="score-input">
+                            <input type="number" formControlName="forcMod" class="mod-input" readonly>
                         </div>
-
-                          <div>
-                                <label for="dados-vida">DADOS DE VIDA</label>
-                                <input type="text" id="dados-vida">
-                            </div>
-                            <div>
-                                <label>TESTES CONTRA A MORTE</label>
-                                <div class="flex-row">
-                                    <div class="checkbox-item"><input type="checkbox"> <label>SUCESSOS</label></div>
-                                    <div class="checkbox-item"><input type="checkbox"> <label>SUCESSOS</label></div>
-                                    <div class="checkbox-item"><input type="checkbox"> <label>SUCESSOS</label></div>
-                                </div>
-                                <div>
-                                    <div class="checkbox-item"><input type="checkbox"> <label>FRACASSOS</label></div>
-                                    <div class="checkbox-item"><input type="checkbox"> <label>FRACASSOS</label></div>
-                                    <div class="checkbox-item"><input type="checkbox"> <label>FRACASSOS</label></div>
-                                </div>
-                                  <div>
-                            <h2>ATAQUES E MAGIAS</h2>
-                            <div>
-                                <div class="small-box">NOME</div>
-                                <div class="small-box">BÔNUS</div>
-                                <div class="small-box">DANO / TIPO</div>
-                            </div>
-                            <div>
-                                <input type="text">
-                                <input type="text">
-                                <input type="text">
-                            </div>
-                            <div >
-                                <input type="text">
-                                <input type="text">
-                                <input type="text">
-                            </div>
-                            <div>
-                                <input type="text">
-                                <input type="text">
-                                <input type="text">
-                            </div>
-                            <textarea style="margin-top: 10px;"></textarea>
+                        <div class="caixaDeAtributos">
+                            <label
+                                title="Mede a agilidade e reflexos. Usado para ataques à distância e armadura.">Destreza
+                            </label>
+                            <input type="number" formControlName="dest" class="score-input">
+                            <input type="number" formControlName="destMod" class="mod-input" readonly>
                         </div>
-
-                        <div>
-                            <h2>EQUIPAMENTO</h2>
-                            <textarea></textarea>
+                        <div class="caixaDeAtributos">
+                            <label
+                                title="Mede a vitalidade e resistência. Define seus Pontos de Vida (PV).">Constituição</label>
+                            <input type="number" formControlName="consti" class="score-input">
+                            <input type="number" formControlName="constiMod" class="mod-input" readonly>
                         </div>
-
-                        <div>
-                            <h2>CARACTERÍSTICAS E HABILIDADES</h2>
-                            <textarea></textarea>
+                        <div class="caixaDeAtributos">
+                            <label
+                                title="Mede o raciocínio e memória. Habilidade chave para Magos.">Inteligência</label>
+                            <input type="number" formControlName="inte" class="score-input">
+                            <input type="number" formControlName="inteMod" class="mod-input" readonly>
                         </div>
-
-                        <div>
-                            <h2>TRAÇOS DE PERSONALIDADE</h2>
-                            <textarea class="large-text-area"></textarea>
+                        <div class="caixaDeAtributos">
+                            <label
+                                title="Mede a percepção e intuição. Habilidade chave para Clérigos e Druidas.">Sabedoria</label>
+                            <input type="number" formControlName="sab" class="score-input">
+                            <input type="number" formControlName="sabMod" class="mod-input" readonly>
                         </div>
-                        <div>
-                            <h2>IDEIAS</h2>
-                            <textarea class="large-text-area"></textarea>
+                        <div class="caixaDeAtributos">
+                            <label title="Mede a força da personalidade. Usado em interações sociais.">Carisma</label>
+                            <input type="number" formControlName="car" class="score-input">
+                            <input type="number" formControlName="carMod" class="mod-input" readonly>
                         </div>
-
-                     <div>
-                            <h2>LIGAÇÕES</h2>
-                            <textarea class="large-text-area"></textarea>
-                        </div>
-                        <div>
-                            <h2>DEFEITOS</h2>
-                            <textarea class="large-text-area"></textarea>
-                        </div>
-
-                         <div>
-                    <label for="idade">IDADE</label>
-                    <input type="text" id="idade">
-                </div>
-                <div>
-                    <label for="altura">ALTURA</label>
-                    <input type="text" id="altura">
-                </div>
-                <div>
-                    <label for="peso">PESO</label>
-                    <input type="text" id="peso">
-                </div>
-                <div>
-                    <label for="olhos">OLHOS</label>
-                    <input type="text" id="olhos">
-                </div>
-                <div>
-                    <label for="pele">PELE</label>
-                    <input type="text" id="pele">
-                </div>
-                <div>
-                    <label for="cabelos">CABELOS</label>
-                    <input type="text" id="cabelos">
-                </div>
-         <div>
-                <h3>APARÊNCIA DO PERSONAGEM</h3>
-                <div>
-                    <p>Espaço para Descrição</p>
-                </div>
-                <textarea style="min-height: 200px;"></textarea>
-            </div>
-
-            <div>
-                <h2>HISTÓRIA DO PERSONAGEM</h2>
-                <textarea style="min-height: 300px;"></textarea>
-            </div>
-             <div>
-                <h2>ALIADOS E ORGANIZAÇÕES</h2>
-                <textarea style="min-height: 200px;"></textarea>
-            </div>
-
-            <div>
-                <div class="section-2" style="border: 1px solid #ddd; padding: 10px; margin-bottom: 10px;">
-                    <label for="nome-simbolo">NOME</label>
-                    <input type="text" id="nome-simbolo">
-                    <div class="image-box" style="height: 150px;">
-                        <p>Espaço para Símbolo</p>
-                    </div>
-                    <div class="small-box-title">SÍMBOLO</div>
-                </div>
-
-                <h2>OUTRAS CARACTERÍSTICAS E HABILIDADES</h2>
-                <textarea style="min-height: 200px;"></textarea>
-            </div>
-
-            <div>
-                <h2>TESOURO</h2>
-                <textarea style="min-height: 200px;"></textarea>
-            </div>
-            <div >
-                <label for="classe-conjurador">CLASSE DE CONJURADOR</label>
-                <input type="text" id="classe-conjurador">
-            </div>
-            <div>
-                <label for="habilidade-chave">HABILIDADE CHAVE</label>
-                <input type="text" id="habilidade-chave">
-            </div>
-            <div>
-                <label for="cd-tr">CD DO TR</label>
-                <input type="text" id="cd-tr">
-            </div>
-            <div>
-                <label for="bonus-ataque">BÔNUS DE ATAQUE</label>
-                <input type="text" id="bonus-ataque">
-            </div>
-            <div class="spell-level-section">
-                <div class="spell-level-header">
-                    <div class="circle"></div>
-                    <div class="circle"></div>
-                    <div class="circle"></div>
-                    <div class="circle"></div>
-                    <h1>0</h1>
-                    <h2>TRUQUES</h2>
-                </div>
-                <ul class="spell-list">
-                    <li><input type="checkbox"><input type="text"></li>
-                    <li><input type="checkbox"><input type="text"></li>
-                    <li><input type="checkbox"><input type="text"></li>
-                    <li><input type="checkbox"><input type="text"></li>
-                    <li><input type="checkbox"><input type="text"></li>
-                    <li><input type="checkbox"><input type="text"></li>
-                    <li><input type="checkbox"><input type="text"></li>
-                    <li><input type="checkbox"><input type="text"></li>
-                    <li><input type="checkbox"><input type="text"></li>
-                </ul>
-                <div class="spell-slot-info">
-                    <div>
-                        <label for="truques-pv-total">PV TOTAL</label>
-                        <input type="text" id="truques-pv-total">
-                    </div>
-                    <div>
-                        <label for="truques-espacos-usados">ESPAÇOS USADOS</label>
-                        <input type="text" id="truques-espacos-usados">
                     </div>
                 </div>
-            </div>
 
-            <div class="spell-level-section">
-                <div class="spell-level-header">
-                    <div class="circle"></div>
-                    <div class="circle"></div>
-                    <div class="circle"></div>
-                    <h1>1</h1>
-                    <div class="circle"></div>
-                    <div class="circle"></div>
-                    <div class="circle"></div>
-                    <div class="circle"></div>
-                    <div class="circle"></div>
-                    <div class="circle"></div>
-                </div>
-                <label for="nome-magia-1">NOME DA MAGIA</label>
-                <ul class="spell-list">
-                    <li><input type="checkbox"><input type="text" id="nome-magia-1"></li>
-                    <li><input type="checkbox"><input type="text"></li>
-                    <li><input type="checkbox"><input type="text"></li>
-                    <li><input type="checkbox"><input type="text"></li>
-                    <li><input type="checkbox"><input type="text"></li>
-                    <li><input type="checkbox"><input type="text"></li>
-                    <li><input type="checkbox"><input type="text"></li>
-                    <li><input type="checkbox"><input type="text"></li>
-                    <li><input type="checkbox"><input type="text"></li>
-                    <li><input type="checkbox"><input type="text"></li>
-                    <li><input type="checkbox"><input type="text"></li>
-                    <li><input type="checkbox"><input type="text"></li>
-                </ul>
-                <div class="spell-slot-info">
-                    <div>
-                        <label for="lvl1-espacos-total">ESPAÇOS TOTAL</label>
-                        <input type="text" id="lvl1-espacos-total">
+                <div class="formulario">
+                    <h2>Combate e Proficiências</h2>
+                    <div class="entradaTextoGrid">
+                        <div class="form-field"><label>Pontos de Vida Totais</label><input type="number"
+                                formControlName="pvTotais">
+                            <p class="helper-text">
+                                No nível 1, é o máximo do seu Dado de Vida + seu mod. de Constituição.
+                            </p>
+                        </div>
+                        <div class="form-field"><label>Iniciativa</label><input type="number"
+                                formControlName="iniciativa">
+                            <p class="helper-text">
+                                Define a ordem no combate. Geralmente igual ao seu mod. de Destreza.
+                            </p>
+                        </div>
+                        <div class="form-field"><label>Deslocamento (metros)</label><input type="number"
+                                formControlName="deslocamento">
+                            <p class="helper-text">
+                                Definido pela sua Raça (ex: 9m para Humanos).
+                            </p>
+                        </div>
+                        <div class="form-field"><label>Bônus de Proficiência</label><input type="number"
+                                formControlName="bonusProef">
+                            <p class="helper-text">
+                                Bônus para suas melhores perícias e ataques. Começa em +2.
+                            </p>
+                        </div>
+                        <div class="form-field"><label>Sabedoria Passiva</label><input type="number"
+                                formControlName="sabPassiva">
+                            <p class="helper-text">
+                                Sua Percepção passiva. É 10 + seu bônus de Percepção.
+                            </p>
+                        </div>
+                        <div class="form-field"><label>Inspiração</label><input type="number" formControlName="inspira">
+                            <p class="helper-text">
+                                Um bônus que o Mestre pode te dar por um bom roleplay.
+                            </p>
+                        </div>
+                        <div class="form-field"><label>Tipo de Dado de Vida</label><input type="text"
+                                formControlName="dadoVida">
+                            <p class="helper-text">
+                                Usado para curar em descansos curtos. Definido pela Classe (d8,d10...).
+                            </p>
+                        </div>
+                        <div class="form-field"><label>Qtd. Dados de Vida</label><input type="number"
+                                formControlName="qtd_DadosVida">
+                            <p class="helper-text">
+                                Geralmente igual ao seu nível.
+                            </p>
+                        </div>
                     </div>
-                    <div>
-                        <label for="lvl1-espacos-usados">ESPAÇOS USADOS</label>
-                        <input type="text" id="lvl1-espacos-usados">
+                    <div class="form-field" style="margin-top: 20px;">
+                        <label>Idiomas e Outras Proficiências</label>
+                        <textarea formControlName="idiomas_Proeficiencias"
+                            placeholder="Liste aqui os idiomas e proficiências com armas, armaduras e ferramentas que seu personagem possui.">
+                        </textarea>
                     </div>
                 </div>
-            </div>
+
+                <div class="formulario">
+                    <h2>Aparência do Personagem</h2>
+                    <div class="entradaTextoGrid">
+                        <div class="form-field">
+                            <label>Idade</label>
+                            <input type="number" formControlName="idade">
+                        </div>
+                        <div class="form-field">
+                            <label>Altura (metros)</label>
+                            <input type="number" formControlName="altura">
+                        </div>
+                        <div class="form-field">
+                            <label>Peso (kg)</label>
+                            <input type="number" formControlName="peso">
+                        </div>
+                        <div class="form-field">
+                            <label>Olhos</label>
+                            <input type="text" formControlName="olhos">
+                        </div>
+                        <div class="form-field">
+                            <label>Pele</label>
+                            <input type="text" formControlName="pele">
+                        </div>
+                        <div class="form-field">
+                            <label>Cabelos</label>
+                            <input type="text" formControlName="cabelos">
+                        </div>
+                    </div>
+                    <div class="form-field" style="margin-top: 20px;">
+                        <label>Descrição da Aparência</label>
+                        <textarea formControlName="aparencia"
+                            placeholder="Descreva a aparência geral, roupas e marcas distintas do seu personagem."></textarea>
+                    </div>
+                </div>
+
+                <div class="formulario">
+                    <h2>Personalidade e História</h2>
+                    <p class="helper-text" style="margin-top: -15px; margin-bottom: 20px;">
+                        Esta seção é para roleplay!
+                    </p>
+                    <div class="entradaTextoGrid" style="grid-template-columns: 1fr 1fr;">
+                        <div class="form-field">
+                            <label>Traços de Personalidade</label>
+                            <textarea formControlName="tracosPerso"
+                                placeholder="Ex: 'Eu sou otimista' ou 'Eu desconfio de todos'..."></textarea>
+                        </div>
+                        <div class="form-field">
+                            <label>Ideais</label>
+                            <textarea formControlName="ideais"
+                                placeholder="Ex: 'Liberdade', 'Respeito', 'Poder'..."></textarea>
+                        </div>
+                        <div class="form-field">
+                            <label>Vínculos</label>
+                            <textarea formControlName="vinculos"
+                                placeholder="Pessoas, lugares ou eventos importantes para ele..."></textarea>
+                        </div>
+                        <div class="form-field">
+                            <label>Fraquezas</label>
+                            <textarea formControlName="fraquezas"
+                                placeholder="Um defeito ou medo que o coloca em apuros...">
+                            </textarea>
+                        </div>
+                    </div>
+                    <div class="form-field" style="margin-top: 20px;">
+                        <label>História do Personagem</label>
+                        <textarea formControlName="historia"
+                            placeholder="De onde ele veio? O que o tornou um aventureiro?"></textarea>
+                    </div>
+                </div>
+
+                <div class="formulario">
+                    <h2>Equipamento e Dinheiro</h2>
+                    <p class="helper-text" style="margin-top: -15px; margin-bottom: 20px;">Geralmente definidos por sua
+                        Classe e Antecedente inicial.</p>
+                    <div class="form-field">
+                        <label>Equipamento</label>
+                        <textarea formControlName="descEquip"
+                            placeholder="Liste suas armas, armadura, pacote de aventureiro e outros itens importantes."></textarea>
+                    </div>
+                    <div class="form-field">
+                        <label>Ataques e Magias</label>
+                        <textarea formControlName="descAtaque"
+                            placeholder="Descreva aqui seus ataques principais ou magias mais usadas para referência rápida."></textarea>
+                    </div>
+                    <div class="form-field">
+                        <label>Tesouro</label>
+                        <textarea formControlName="tesouro"></textarea>
+                    </div>
+                    <div class="entradaTextoGrid" style="grid-template-columns: repeat(5, 1fr); margin-top: 20px;">
+                        <div class="form-field">
+                            <label>PCobre</label>
+                            <input type="number" formControlName="pCobre">
+                        </div>
+                        <div class="form-field">
+                            <label>PPrata</label>
+                            <input type="number" formControlName="pPrata">
+                        </div>
+                        <div class="form-field">
+                            <label>PEletro</label>
+                            <input type="number" formControlName="pEletro">
+                        </div>
+                        <div class="form-field">
+                            <label>POuro</label>
+                            <input type="number" formControlName="pOuro">
+                        </div>
+                        <div class="form-field">
+                            <label>PPlatina</label>
+                            <input type="number" formControlName="pPlatina">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formulario">
+                    <h2>Outras Notas</h2>
+                    <div class="entradaTextoGrid" style="grid-template-columns: 1fr 1fr;">
+                        <div class="form-field">
+                            <label>Habilidades de Classe e Raça</label>
+                            <textarea formControlName="caractHabilidades"></textarea>
+                        </div>
+                        <div class="form-field">
+                            <label>Aliados e Organizações</label>
+                            <textarea formControlName="aliadosOrg"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-field" style="margin-top: 20px;">
+                        <label>Outras Características</label>
+                        <textarea formControlName="outrasCaract"></textarea>
+                    </div>
+                </div>
+
+                <div class="formulario">
+                    <div class="form-check">
+                        <input type="checkbox" formControlName="publica" id="publica-check">
+                        <label for="publica-check">Tornar esta ficha pública para outros usuários verem?</label>
+                    </div>
+                </div>
+                <div class="header">
+                        <div>
+                            <button type="button" routerLink="/home" class="botaoCancelar">Cancelar</button>
+                            <button type="submit" [disabled]="fichaForm.invalid" class="botaoSalvar">Salvar Ficha</button>
+                        </div>
+                </div>
+            </form>
         </div>
     </div>
+</div>

@@ -1,18 +1,16 @@
-// Base styles for the container
 .container 
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: url('/imgs/telaFundo.png') no-repeat center center;
-    background-size: cover;
-    text-align: center; // This was duplicated, removed one
-    gap: 20px;
-    padding: 20px;
+    height: 100vh
+    width: 100vw
+    display: flex
+    justify-content: center
+    align-items: center
+    background: url('/imgs/telaFundo.png') no-repeat center center
+    background-size: cover
+    text-align: center
+    gap: 20px
+    padding: 20px
 
 
-// Styles for left and right columns
 .esquerda, .direita 
     height: 90vh
     max-height: 800px
@@ -23,29 +21,24 @@
     flex-direction: column
     justify-content: flex-start
 
-
 .esquerda 
-    width: 20%; // Consider using flex-basis or simply flex for better responsiveness
-    background-color:rgb(245, 221, 169)
-    align-items: center;
+    width: 20%
+    align-items: center
    
-
-
 .direita 
-    width: 80%; // Same as above, consider flex-basis
-    background-color: rgb(243, 237, 224);
-    overflow: hidden; // Keeps content within bounds, scroll handled by .verFicha
+    width: 56%
+    background-color: rgb(243, 237, 224)
+    overflow: hidden
+    flex: 50%
+    overflow-y: auto
+    overflow-x: auto
 
-
-
-// Adjust position for icons/menu
 .menu 
     display: flex
     justify-content: space-between
     align-items: center
     margin-bottom: 10px
-    margin-top: -10px // Sobe os ícones
-
+    margin-top: -10px
 
 .botaoImg 
     all: unset
@@ -57,22 +50,153 @@
     height: 45px
     width: 45px
     border-radius: 50%
+
+
+//Criador de ficha
+.criacaoBody
+    padding: 30px
+    width: 100%
+    height: 100vh
+    background-color: rgb(243, 237, 224) 
+    display: 50%
+    justify-content: center
+
+.header
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding-bottom: 20px
+    margin-bottom: 30px
+    
+    h1
+        font-family: girassol
+        color: rgb(172, 28, 28)
+        margin: 0
+    div
+        display: flex
+        gap: 10px
+
+.botaoSalvar, .botaoCancelar
+    padding: 10px
+    border: none
+    border-radius: 5px
+    background-color: rgb(172, 28, 28)
+    color: rgb(240, 240, 240)
+    cursor: pointer
+    transition: opacity 0.3s ease
+    &:hover
+        background-color: darken(#ce5454, 10%)
+
+.botaoSalvar
+    &[disabled]
+        background-color: #aaa
+        cursor: not-allowed
+
+.formulario
+    margin-bottom: 30px
+
+    
+    h2
+        font-family: girassol
+        color: rgb(172, 28, 28)
+        border-bottom: 2px solid #ccc
+        padding-bottom: 10px
+        margin-bottom: 20px
+
+.entradaTextoGrid
+    display: grid
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
+    gap: 20px
+
+.form-field
+    display: flex
+    flex-direction: column
+
+    label
+        font-weight: bold
+        margin-bottom: 5px
+        font-size: 0.9em
+        color: rgb(172, 28, 28)
+        text-align: left
+        font-family: libre-bold
+    
+    input[type="text"], input[type="number"], textarea
+        width: 100%
+        padding: 10px
+        border: 1px solid #ccc
+        border-radius: 5px
+        font-size: 1em
+        box-sizing: border-box
+    textarea
+        min-height: 100px
+        resize: vertical
+
+.atributosGrid
+    display: grid
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr))
+    gap: 15px
+
+.caixaDeAtributos
+    display: flex
+    flex-direction: column
+    align-items: center
+    background-color: #f9f9f9
+    border: 1px solid #ccc
+    border-radius: 8px
+    padding: 10px
+
+    label
+        color: rgb(172, 28, 28)
+        font-weight: bold
+        font-family: libre-bold
+        margin-bottom: 10px
+
+    .score-input
+        font-size: 2em
+        font-weight: bold
+        width: 80px
+        text-align: center
+        border: 2px solid #ccc
+        margin-bottom: 5px
+
+    .mod-input
+        width: 50px
+        text-align: center
+        font-size: 1.2em
+        border: 1px solid #eee
+        background-color: #e9ecef
+        color: #495057
+
+.form-check
+    display: flex
+    align-items: center
+    gap: 10px
     
 
-// Specific styles for the D&D character sheet container
-.verFicha 
-    flex-grow: 1
-    overflow-y: auto
-    margin-top: 10px
-    text-align: left
-    line-height: 1.6
-    padding-right: 10px
+    label
+        font-family: libre-bold
+        font-weight: normal
+        margin: 0
 
+.helper-text
+  font-size: 0.8em
+  font-style: italic
+  color: #555 // Uma cor mais suave que a do label
+  text-align: left
+  margin-top: -15px // Sobe o texto para ficar mais perto do campo acima
+  margin-bottom: 20px
+  max-width: 90% // Evita que o texto fique muito largo
+  line-height: 1.4
+
+// Estilo para o helper-text dentro de um form-field
+.form-field .helper-text
+  margin-top: 4px
+  margin-bottom: 0
+  max-width: 100%
 
 h1, h2
     font-family: girassol
     color: rgb(172, 28, 28)
     margin: 10px 0
-
 p
     font-family: libre-bold

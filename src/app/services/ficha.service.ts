@@ -15,4 +15,12 @@ export class FichaService {
     // pois o endpoint Django está configurado com AllowAny.
     return this.http.get<ficha[]>('http://localhost:8000/FichasPublicas/');
   }
+
+  criaFicha(fichaData: Partial<ficha>): Observable<ficha> {
+    return this.http.post<ficha>("http://localhost:8000/Fichas/", fichaData);
+  }
+
+  deleteFicha(fichaUrl: string): Observable<void> {
+    return this.http.delete<void>(fichaUrl);
+  }
 }
