@@ -32,6 +32,7 @@
     overflow: hidden
     flex: 50%
     overflow-y: auto
+    overflow-x: auto
 
 // Ajustar posição dos ícones
 .menu
@@ -40,6 +41,12 @@
     align-items: center
     margin-bottom: 10px
     margin-top: -10px // Sobe os ícones
+
+.menuInferior
+    display: flex
+    justify-content: space-evenly
+    align-items: center
+
 
 .botaoImg
     all: unset
@@ -76,7 +83,7 @@
     line-height: 1.6
     padding-right: 10px
 
-.add
+.addRmv
     align-self: center
     height: 45px
     width: 45px
@@ -102,12 +109,18 @@ li
     margin: 8px 0
     background-color: rgba(255, 255, 255, 0.57)
     border-radius: 7px
+    font-family: libre-bold
     cursor: pointer
     align-items: center
     transition: background-color 0.3s ease
 
     &:hover
         background-color: rgb(206, 200, 187)
+
+    &.selecionado
+        background-color: rgb(206, 200, 187)
+
+    
 
 h1, h2
     font-family: girassol
@@ -195,10 +208,12 @@ p
   border-radius: 8px
   flex: 1
   min-width: 120px
+  font-family: libre-bold
 
   span
     font-size: 1.5em
     font-weight: bold
+    font-family: girassol
     display: block
 
 .textBox
@@ -212,6 +227,10 @@ p
     margin-top: 0
     border-bottom: 1px solid #ddd
     padding-bottom: 5px
+    color: rgb(172, 28, 28)
+    font-size: 20px
+    font-family: girassol
+
   
   p
     white-space: pre-wrap
@@ -221,6 +240,30 @@ p
   display: grid
   grid-template-columns: 1fr 1fr
   gap: 15px
+  
+
+.aparência-grid, .dinheiro-grid 
+  display: grid
+  // Cria colunas que se ajustam automaticamente ao espaço
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr))
+  gap: 10px
+  margin-top: 10px
+  font-family: libre-bold
+  justify-content: center
+  text-align: center // Alinha o texto dos spans à esquerda
+  
+
+
+.dinheiro-grid 
+  border-top: 1px solid #ddd
+  padding-top: 10px
+  span:
+    font-weight: normal // Deixa o número normal
+  strong:
+    font-weight: bold // Deixa a sigla da moeda em negrito
+    color: #333
+    
+  
 
 
 

@@ -1,5 +1,5 @@
 export interface ficha {
-  id_ficha: number;
+  url: string;
   forc: number;
   dest: number;
   consti: number;
@@ -52,5 +52,5 @@ export interface ficha {
   historia: string | null;
   tesouro: string | null;
   publica: boolean;
-  usuario: number;
+  usuario: string;
 }

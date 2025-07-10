@@ -1,15 +1,15 @@
-<div class = "container"> 
+<div class="container">
 
-    <div class = "esquerda"> 
+    <div class="esquerda">
 
         <div class="menu">
-  
+
             <ng-container *ngIf="editando; else displayMode">
                 <form [formGroup]="editor" class="editorContainer">
                     <button type="button" class="botaoImg" (click)="cancelarEdit()">
                         <img src="/icon/undo.svg" alt="Cancelar" width="24" height="24">
                     </button>
-                    
+
                     <div class="camposEdicao">
                         <img src="/imgs/fotoDefault.png" width="100" height="100">
                         <input type="text" formControlName="username" placeholder="Nome de usuário">
@@ -26,48 +26,44 @@
                 <button class="botaoImg" (click)="edicaoPerfil()">
                     <img src="/icon/editar.svg" alt="Editar" width="24" height="24">
                 </button>
-                
+
                 <div *ngIf="userData">
                     <img src="/imgs/fotoDefault.png" width="100" height="100">
                     <h2>{{ userData.username }}</h2>
                     <p>{{ userData.email }}</p>
                 </div>
-                
+
                 <button class="botaoImg" (click)="logout()">
                     <img src="/icon/saida.svg" alt="Sair" width="24" height="24">
                 </button>
             </ng-template>
 
         </div>
-        
+
         <div class="listaFichaE">
             <h2>Fichas Criadas</h2>
             <ol *ngIf="fichas && fichas.length > 0">
-                <li *ngFor="let ficha of fichas" (click)="selecionarFicha(ficha)" 
-                    [class.selecionado]="ficha.id_ficha === fichaSelecionada?.id_ficha"> 
+                <li *ngFor="let ficha of fichas" (click)="selecionarFicha(ficha)"
+                    [class.selecionado]="ficha.url === fichaSelecionada?.url">
                     {{ ficha.nomePerso }}
                 </li>
             </ol>
         </div>
-        <div class = "menu">
-            <button class="botaoImg">
-                <img src="/icon/excluir.svg" alt="Editar" width="24" height="24">
-            </button>
+        <div class="menuInferior">
 
-            <button class="add" onclick="">+</button>
+            <button class="addRmv" (click)="deleteSelectedFicha()" [disabled]="!fichaSelecionada || !isOwnerOfSelectedFicha()">-</button>
+            <button class="addRmv" routerLink="/ficha">+</button>
 
-            <button class="botaoImg">
-                <img src="/icon/verificar.svg" alt="Editar" width="24" height="24">
-            </button>  
-            </div>
+        </div>
     </div>
-    
+
     <div class="centro" *ngIf="fichaSelecionada">
 
         <div class="fichaHeader">
             <h1>{{ fichaSelecionada.nomePerso }}</h1>
             <div class="ficha-subheader">
-                <span>{{ fichaSelecionada.raca }} {{ fichaSelecionada.classe }}, Nível {{ fichaSelecionada.nivel }}</span>
+                <span>{{ fichaSelecionada.raca }} {{ fichaSelecionada.classe }}, Nível {{ fichaSelecionada.nivel
+                    }}</span>
                 <span>Alinhamento: {{ fichaSelecionada.alinhamento }}</span>
                 <span>EXP: {{ fichaSelecionada.exp }}</span>
             </div>
@@ -75,57 +71,79 @@
 
         <div class="fichaBody">
             <div class="coluna-atributos">
-                
+
                 <div class="stats-grid">
                     <div class="boxAtributo">
                         <h4>Força</h4>
-                        <span class="modificador">{{ fichaSelecionada.forcMod }}</span>
-                        <span class="score">{{ fichaSelecionada.forc }}</span>
+                        <span class="modificador">{{ fichaSelecionada.forc }}</span>
+                        <span class="score">{{ fichaSelecionada.forcMod }}</span>
                     </div>
                     <div class="boxAtributo">
                         <h4>Destreza</h4>
-                        <span class="modificador">{{ fichaSelecionada.destMod }}</span>
-                        <span class="score">{{ fichaSelecionada.dest }}</span>
+                        <span class="modificador">{{ fichaSelecionada.dest }}</span>
+                        <span class="score">{{ fichaSelecionada.destMod }}</span>
                     </div>
                     <div class="boxAtributo">
                         <h4>Constituição</h4>
-                        <span class="modificador">{{ fichaSelecionada.constiMod }}</span>
-                        <span class="score">{{ fichaSelecionada.consti }}</span>
+                        <span class="modificador">{{ fichaSelecionada.consti }}</span>
+                        <span class="score">{{ fichaSelecionada.constiMod }}</span>
                     </div>
                     <div class="boxAtributo">
                         <h4>Inteligência</h4>
-                        <span class="modificador">{{ fichaSelecionada.inteMod }}</span>
-                        <span class="score">{{ fichaSelecionada.inte }}</span>
+                        <span class="modificador">{{ fichaSelecionada.inte }}</span>
+                        <span class="score">{{ fichaSelecionada.inteMod }}</span>
                     </div>
                     <div class="boxAtributo">
                         <h4>Sabedoria</h4>
-                        <span class="modificador">{{ fichaSelecionada.sabMod }}</span>
-                        <span class="score">{{ fichaSelecionada.sab }}</span>
+                        <span class="modificador">{{ fichaSelecionada.sab }}</span>
+                        <span class="score">{{ fichaSelecionada.sabMod }}</span>
                     </div>
                     <div class="boxAtributo">
                         <h4>Carisma</h4>
-                        <span class="modificador">{{ fichaSelecionada.carMod }}</span>
-                        <span class="score">{{ fichaSelecionada.car }}</span>
+                        <span class="modificador">{{ fichaSelecionada.car }}</span>
+                        <span class="score">{{ fichaSelecionada.carMod }}</span>
                     </div>
+                </div>
+
+                <div class="textBox">
+                    <h3>Aparência Física</h3>
+                    <div class="aparência-grid">
+                        <span><strong>Idade:</strong> {{ fichaSelecionada.idade }}</span>
+                        <span><strong>Altura:</strong> {{ fichaSelecionada.altura }}m</span>
+                        <span><strong>Peso:</strong> {{ fichaSelecionada.peso }}kg</span>
+                        <span><strong>Olhos:</strong> {{ fichaSelecionada.olhos }}</span>
+                        <span><strong>Pele:</strong> {{ fichaSelecionada.pele }}</span>
+                        <span><strong>Cabelos:</strong> {{ fichaSelecionada.cabelos }}</span>
+                    </div>
+                    <p style="margin-top: 10px;">{{ fichaSelecionada.aparencia }}</p>
                 </div>
 
                 <div class="textBox">
                     <h3>Idiomas e Proficiências</h3>
                     <p>{{ fichaSelecionada.idiomas_Proeficiencias }}</p>
                 </div>
+
+                <div class="textBox">
+                    <h3>História do Personagem</h3>
+                    <p>{{ fichaSelecionada.historia }}</p>
+                </div>
             </div>
 
             <div class="coluna-principal">
-                
+
                 <div class="combat-stats">
                     <div class="combat-box"><span>{{ fichaSelecionada.pvTotais }}</span> Pontos de Vida</div>
                     <div class="combat-box"><span>{{ fichaSelecionada.iniciativa }}</span> Iniciativa</div>
                     <div class="combat-box"><span>{{ fichaSelecionada.deslocamento }}m</span> Deslocamento</div>
                 </div>
                 <div class="combat-stats">
-                    <div class="combat-box"><span>{{ fichaSelecionada.dadoVida }}</span> Dado de Vida</div>
-                    <div class="combat-box"><span>{{ fichaSelecionada.bonusProef }}</span> Bônus de Prof.</div>
+                    <div class="combat-box"><span>{{ fichaSelecionada.qtd_DadosVida }}{{ fichaSelecionada.dadoVida
+                            }}</span> Dados de Vida</div>
+                    <div class="combat-box"><span>+{{ fichaSelecionada.bonusProef }}</span> Bônus de Prof.</div>
                     <div class="combat-box"><span>{{ fichaSelecionada.sabPassiva }}</span> Sabedoria Passiva</div>
+                </div>
+                <div class="combat-stats" style="justify-content: center;">
+                    <div class="combat-box"><span>{{ fichaSelecionada.inspira }}</span> Inspiração</div>
                 </div>
 
                 <div class="textBox">
@@ -133,8 +151,15 @@
                     <p>{{ fichaSelecionada.descAtaque }}</p>
                 </div>
                 <div class="textBox">
-                    <h3>Equipamento</h3>
+                    <h3>Equipamento e Dinheiro</h3>
                     <p>{{ fichaSelecionada.descEquip }}</p>
+                    <div class="dinheiro-grid">
+                        <span><strong>PC:</strong> {{ fichaSelecionada.pCobre }}</span>
+                        <span><strong>PP:</strong> {{ fichaSelecionada.pPrata }}</span>
+                        <span><strong>PE:</strong> {{ fichaSelecionada.pEletro }}</span>
+                        <span><strong>PO:</strong> {{ fichaSelecionada.pOuro }}</span>
+                        <span><strong>PL:</strong> {{ fichaSelecionada.pPlatina }}</span>
+                    </div>
                 </div>
 
                 <div class="personalidade">
@@ -155,6 +180,19 @@
                         <p>{{ fichaSelecionada.fraquezas }}</p>
                     </div>
                 </div>
+
+                <div class="textBox">
+                    <h3>Habilidades e Características</h3>
+                    <p>{{ fichaSelecionada.caractHabilidades }}</p>
+                </div>
+                <div class="textBox">
+                    <h3>Aliados e Organizações</h3>
+                    <p>{{ fichaSelecionada.aliadosOrg }}</p>
+                </div>
+                <div class="textBox">
+                    <h3>Tesouro</h3>
+                    <p>{{ fichaSelecionada.tesouro }}</p>
+                </div>
             </div>
         </div>
     </div>
@@ -164,14 +202,13 @@
         <p>Clique em uma das suas fichas na lista à esquerda para ver os detalhes.</p>
     </div>
 
-    <div class = "direita">
+    <div class="direita">
         <h1> Fichas Publicas </h1>
         <div class="listaFichaD">
-            
+
             <ol *ngIf="fichasPublicas.length > 0">
-                <li *ngFor="let fichaPublica of fichasPublicas" 
-                    (click)="selecionarFicha(fichaPublica)"
-                    [class.selecionado]="fichaPublica.id_ficha === fichaSelecionada?.id_ficha">
+                <li *ngFor="let fichaPublica of fichasPublicas" (click)="selecionarFicha(fichaPublica)"
+                    [class.selecionado]="fichaPublica.url === fichaSelecionada?.url">
                     {{ fichaPublica.nomePerso }}
                 </li>
             </ol>
@@ -181,4 +218,4 @@
             </div>
         </div>
 
-</div>
+    </div>

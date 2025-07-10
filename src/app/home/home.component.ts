@@ -105,6 +105,43 @@ export class HomeComponent implements OnInit{
     });
   }
 
+  isOwnerOfSelectedFicha(): boolean {
+    // Se não houver ficha selecionada ou dados do usuário, não é o dono.
+    if (!this.fichaSelecionada || !this.userData) {
+      return false;
+    }
+    return this.fichaSelecionada.usuario === this.userData.url;
+  }
+  deleteSelectedFicha(): void {
+    if (!this.fichaSelecionada) {
+      alert('Por favor, selecione uma ficha da sua lista para excluir.');
+      return;
+    }
+    if (!this.isOwnerOfSelectedFicha()) {
+      alert('Ação não permitida: Você só pode excluir as suas próprias fichas.');
+      return;
+    }
+
+    const confirmDelete = confirm(
+      `Você tem certeza que deseja excluir a ficha "${this.fichaSelecionada.nomePerso}"? Esta ação não pode ser desfeita.`
+    );
+
+    if (confirmDelete) {
+      this.fichaService.deleteFicha(this.fichaSelecionada.url).subscribe({
+        next: () => {
+          alert('Ficha excluída com sucesso!');
+          
+          this.fichas = this.fichas.filter(f => f.url !== this.fichaSelecionada!.url);
+          this.fichaSelecionada = null;
+        },
+        error: (err) => {
+          console.error('Erro ao excluir a ficha:', err);
+          alert('Ocorreu um erro ao tentar excluir a ficha.');
+        }
+      });
+    }
+  }
+
   logout(){
     this.authService.logout();
   }
